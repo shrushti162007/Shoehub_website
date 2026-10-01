@@ -8,382 +8,772 @@
 
 <style>
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  background:#f7f7f7;
-  color:#171717;
+    background:#f5f5f5;
+    color:#111;
 }
 
-button,
-input,
-select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-/* ================= HEADER ================= */
-
-header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:#111;
-  color:white;
-  padding:17px 6%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  box-shadow:0 3px 20px rgba(0,0,0,.2);
+/* NAVBAR */
+.navbar{
+    height:72px;
+    background:#080808;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
 .logo{
-  font-size:28px;
-  font-weight:900;
-  letter-spacing:-1px;
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:-1px;
 }
 
 .logo span{
-  color:#ff4d00;
+    color:#ff4d00;
 }
 
-nav{
-  display:flex;
-  gap:25px;
+.nav-links{
+    display:flex;
+    gap:30px;
+    list-style:none;
 }
 
-nav a{
-  color:white;
-  text-decoration:none;
-  font-size:14px;
-  font-weight:bold;
-  transition:.3s;
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-size:15px;
+    font-weight:bold;
 }
 
-nav a:hover{
-  color:#ff4d00;
+.nav-links a:hover{
+    color:#ff4d00;
 }
 
-.header-actions{
-  display:flex;
-  gap:10px;
-  align-items:center;
+.cart{
+    background:#ff4d00;
+    padding:11px 18px;
+    border-radius:25px;
+    font-weight:bold;
 }
 
-.header-icon{
-  width:42px;
-  height:42px;
-  border:none;
-  border-radius:50%;
-  background:#222;
-  color:white;
-  font-size:18px;
-  position:relative;
-}
-
-.header-icon:hover{
-  background:#ff4d00;
-}
-
-.cart-count{
-  position:absolute;
-  top:-4px;
-  right:-3px;
-  background:#ff4d00;
-  color:white;
-  width:19px;
-  height:19px;
-  border-radius:50%;
-  font-size:11px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
-}
-
-/* ================= HERO ================= */
-
+/* HERO */
 .hero{
-  min-height:590px;
-  display:flex;
-  align-items:center;
-  padding:80px 7%;
-  color:white;
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.3)),
-    url("https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1800&q=90")
-    center/cover;
+    min-height:600px;
+    display:flex;
+    align-items:center;
+    padding:70px 7%;
+    background:
+    linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.45),rgba(0,0,0,.05)),
+    url("https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1600&q=90");
+    background-size:cover;
+    background-position:center;
 }
 
 .hero-content{
-  max-width:650px;
+    max-width:650px;
+    color:white;
 }
 
-.hero-tag{
-  display:inline-block;
-  background:#ff4d00;
-  padding:8px 15px;
-  border-radius:30px;
-  font-size:12px;
-  font-weight:bold;
-  margin-bottom:20px;
-  letter-spacing:1px;
+.small-title{
+    color:#ff4d00;
+    font-size:15px;
+    font-weight:bold;
+    letter-spacing:3px;
+    margin-bottom:15px;
 }
 
 .hero h1{
-  font-size:68px;
-  line-height:1;
-  margin-bottom:22px;
-  font-weight:900;
+    font-size:65px;
+    line-height:1;
+    margin-bottom:22px;
 }
 
 .hero h1 span{
-  color:#ff5a00;
+    color:#ff4d00;
 }
 
 .hero p{
-  color:#ddd;
-  font-size:19px;
-  line-height:1.6;
-  margin-bottom:30px;
+    font-size:18px;
+    line-height:1.7;
+    color:#ddd;
+    margin-bottom:30px;
 }
 
-.hero-buttons{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
+.shop-btn{
+    display:inline-block;
+    background:#ff4d00;
+    color:white;
+    padding:15px 28px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
 }
 
-.btn{
-  border:none;
-  padding:15px 28px;
-  border-radius:30px;
-  font-weight:bold;
-  background:#ff4d00;
-  color:white;
-  transition:.3s;
+.shop-btn:hover{
+    background:white;
+    color:#111;
 }
 
-.btn:hover{
-  transform:translateY(-3px);
-  background:#e64100;
-}
-
-.btn-outline{
-  background:transparent;
-  border:1px solid white;
-}
-
-.btn-outline:hover{
-  background:white;
-  color:#111;
-}
-
-/* ================= FEATURES ================= */
-
-.features{
-  background:white;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  padding:25px 7%;
-  gap:20px;
-  border-bottom:1px solid #eee;
-}
-
-.feature{
-  display:flex;
-  align-items:center;
-  gap:13px;
-}
-
-.feature-icon{
-  font-size:27px;
-}
-
-.feature h4{
-  font-size:14px;
-  margin-bottom:4px;
-}
-
-.feature p{
-  font-size:12px;
-  color:#777;
-}
-
-/* ================= GENERAL ================= */
-
+/* SECTION */
 .section{
-  padding:75px 6%;
+    padding:70px 7%;
 }
 
-.section-heading{
-  text-align:center;
-  margin-bottom:40px;
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
 }
 
-.section-heading h2{
-  font-size:36px;
-  margin-bottom:9px;
+.section-title h2{
+    font-size:38px;
+    margin-bottom:10px;
 }
 
-.section-heading p{
-  color:#777;
+.section-title p{
+    color:#777;
 }
 
-/* ================= CATEGORIES ================= */
-
+/* CATEGORIES */
 .categories{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
 }
 
 .category{
-  height:190px;
-  border-radius:18px;
-  overflow:hidden;
-  position:relative;
-  cursor:pointer;
+    height:180px;
+    border-radius:18px;
+    overflow:hidden;
+    position:relative;
+    background-size:cover;
+    background-position:center;
+    cursor:pointer;
 }
 
-.category img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:.5s;
+.category:nth-child(1){
+    background-image:url("https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80");
 }
 
-.category:hover img{
-  transform:scale(1.08);
+.category:nth-child(2){
+    background-image:url("https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=700&q=80");
 }
 
-.category-overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(transparent,rgba(0,0,0,.8));
-  display:flex;
-  align-items:flex-end;
-  padding:20px;
-  color:white;
+.category:nth-child(3){
+    background-image:url("https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=700&q=80");
 }
 
-.category-overlay h3{
-  font-size:20px;
+.category:nth-child(4){
+    background-image:url("https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=700&q=80");
 }
 
-/* ================= SHOP TOOLBAR ================= */
-
-.shop-toolbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  flex-wrap:wrap;
-  margin-bottom:30px;
+.category:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(transparent,rgba(0,0,0,.85));
 }
 
-.search{
-  flex:1;
-  min-width:240px;
-  padding:15px 20px;
-  border:1px solid #ddd;
-  border-radius:30px;
-  background:white;
-  outline:none;
+.category h3{
+    position:absolute;
+    bottom:20px;
+    left:22px;
+    color:white;
+    font-size:23px;
+    z-index:2;
 }
 
-.search:focus{
-  border-color:#ff4d00;
-}
-
-.filters{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
-.filter{
-  padding:11px 16px;
-  border:1px solid #ddd;
-  background:white;
-  border-radius:25px;
-  font-weight:bold;
-  font-size:13px;
-}
-
-.filter.active,
-.filter:hover{
-  background:#111;
-  color:white;
-}
-
-.sort{
-  padding:12px 16px;
-  border:1px solid #ddd;
-  border-radius:25px;
-  background:white;
-  outline:none;
-}
-
-/* ================= PRODUCTS ================= */
-
+/* PRODUCTS */
 .products{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:22px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
 }
 
-.card{
-  background:white;
-  border-radius:18px;
-  overflow:hidden;
-  position:relative;
-  box-shadow:0 5px 20px rgba(0,0,0,.06);
-  transition:.3s;
+.product{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+    transition:.3s;
 }
 
-.card:hover{
-  transform:translateY(-7px);
-  box-shadow:0 15px 35px rgba(0,0,0,.12);
+.product:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
 }
 
-.product-image{
-  height:245px;
-  background:#eee;
-  position:relative;
-  overflow:hidden;
+.product-img{
+    height:230px;
+    overflow:hidden;
+    background:#eee;
 }
 
-.product-image img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:.5s;
+.product-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.4s;
 }
 
-.card:hover .product-image img{
-  transform:scale(1.06);
+.product:hover img{
+    transform:scale(1.08);
 }
 
-.badge{
-  position:absolute;
-  top:13px;
-  left:13px;
-  background:#ff4d00;
-  color:white;
-  padding:6px 10px;
-  border-radius:15px;
-  font-size:10px;
-  font-weight:bold;
-  z-index:2;
+.product-info{
+    padding:20px;
+}
+
+.tag{
+    color:#ff4d00;
+    font-size:12px;
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+.product h3{
+    margin:8px 0;
+    font-size:19px;
+}
+
+.product p{
+    color:#777;
+    font-size:14px;
+    margin-bottom:14px;
+}
+
+.price{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.old-price{
+    color:#999;
+    text-decoration:line-through;
+    font-size:14px;
+    margin-left:7px;
+}
+
+.buy-btn{
+    width:100%;
+    margin-top:15px;
+    padding:12px;
+    border:0;
+    background:#111;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.buy-btn:hover{
+    background:#ff4d00;
+}
+
+/* OFFER */
+.offer{
+    margin:20px 7% 70px;
+    border-radius:25px;
+    padding:55px;
+    background:#111;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.offer h2{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.offer p{
+    color:#bbb;
+}
+
+/* CONTACT */
+.contact{
+    background:#ff4d00;
+    color:white;
+    text-align:center;
+    padding:65px 20px;
+}
+
+.contact h2{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.contact p{
+    font-size:17px;
+    margin:8px;
+}
+
+.contact a{
+    color:white;
+    font-weight:bold;
+}
+
+/* FOOTER */
+footer{
+    background:#070707;
+    color:#aaa;
+    text-align:center;
+    padding:30px 20px;
+}
+
+footer strong{
+    color:white;
+}
+
+.credit{
+    margin-top:8px;
+    color:#ff4d00;
+    font-weight:bold;
+}
+
+/* TOAST */
+#toast{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    background:#111;
+    color:white;
+    padding:15px 22px;
+    border-radius:10px;
+    display:none;
+    z-index:2000;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        min-height:550px;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .offer{
+        flex-direction:column;
+        text-align:center;
+    }
+}
+
+@media(max-width:600px){
+
+    .hero{
+        padding:50px 6%;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .categories,
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .section{
+        padding:50px 6%;
+    }
+
+    .offer{
+        margin:10px 6% 50px;
+        padding:40px 25px;
+    }
+
+    .offer h2{
+        font-size:30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <div class="logo">
+        SHOE<span>HUB</span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#products">Collection</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="cart">
+        🛒 Cart <span id="cartCount">0</span>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            STEP INTO STYLE
+        </div>
+
+        <h1>
+            YOUR STYLE.<br>
+            YOUR <span>SHOES.</span>
+        </h1>
+
+        <p>
+            Discover stylish sneakers and everyday footwear
+            made for people who want comfort without compromising
+            on their look.
+        </p>
+
+        <a href="#products" class="shop-btn">
+            SHOP COLLECTION →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+<section class="section" id="categories">
+
+    <div class="section-title">
+        <h2>Explore Categories</h2>
+        <p>Find the perfect pair for every occasion.</p>
+    </div>
+
+    <div class="categories">
+
+        <div class="category">
+            <h3>Running</h3>
+        </div>
+
+        <div class="category">
+            <h3>Sneakers</h3>
+        </div>
+
+        <div class="category">
+            <h3>Sports</h3>
+        </div>
+
+        <div class="category">
+            <h3>Casual</h3>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+<section class="section" id="products">
+
+    <div class="section-title">
+        <h2>Trending Collection</h2>
+        <p>Fresh styles. Everyday comfort. Your next favourite pair.</p>
+    </div>
+
+
+    <div class="products">
+
+        <!-- 1 -->
+        <div class="product">
+
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=90">
+            </div>
+
+            <div class="product-info">
+                <div class="tag">Trending</div>
+                <h3>Red Street Runner</h3>
+                <p>Lightweight everyday sneaker.</p>
+
+                <span class="price">₹2,499</span>
+                <span class="old-price">₹3,999</span>
+
+                <button class="buy-btn" onclick="addToCart()">
+                    ADD TO CART
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- 2 -->
+        <div class="product">
+
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=90">
+            </div>
+
+            <div class="product-info">
+                <div class="tag">Popular</div>
+                <h3>Urban White Sneaker</h3>
+                <p>Clean design for everyday outfits.</p>
+
+                <span class="price">₹2,799</span>
+                <span class="old-price">₹4,299</span>
+
+                <button class="buy-btn" onclick="addToCart()">
+                    ADD TO CART
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- 3 -->
+        <div class="product">
+
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=800&q=90">
+            </div>
+
+            <div class="product-info">
+                <div class="tag">New</div>
+                <h3>Classic Black Runner</h3>
+                <p>Comfortable performance-inspired design.</p>
+
+                <span class="price">₹2,999</span>
+                <span class="old-price">₹4,499</span>
+
+                <button class="buy-btn" onclick="addToCart()">
+                    ADD TO CART
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- 4 -->
+        <div class="product">
+
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=800&q=90">
+            </div>
+
+            <div class="product-info">
+                <div class="tag">Hot Pick</div>
+                <h3>Classic Casual</h3>
+                <p>Minimal style for daily wear.</p>
+
+                <span class="price">₹2,299</span>
+                <span class="old-price">₹3,499</span>
+
+                <button class="buy-btn" onclick="addToCart()">
+                    ADD TO CART
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- 5 -->
+        <div class="product">
+
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=800&q=90">
+            </div>
+
+            <div class="product-info">
+                <div class="tag">Sport</div>
+                <h3>Performance Trainer</h3>
+                <p>Built for active everyday movement.</p>
+
+                <span class="price">₹3,199</span>
+                <span class="old-price">₹4,999</span>
+
+                <button class="buy-btn" onclick="addToCart()">
+                    ADD TO CART
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- 6 -->
+        <div class="product">
+
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=800&q=90">
+            </div>
+
+            <div class="product-info">
+                <div class="tag">Limited</div>
+                <h3>Street Flex</h3>
+                <p>Bold look with everyday comfort.</p>
+
+                <span class="price">₹2,699</span>
+                <span class="old-price">₹3,999</span>
+
+                <button class="buy-btn" onclick="addToCart()">
+                    ADD TO CART
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- 7 -->
+        <div class="product">
+
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=800&q=90">
+            </div>
+
+            <div class="product-info">
+                <div class="tag">Trending</div>
+                <h3>Daily Comfort</h3>
+                <p>Soft, simple and easy to style.</p>
+
+                <span class="price">₹2,199</span>
+                <span class="old-price">₹3,299</span>
+
+                <button class="buy-btn" onclick="addToCart()">
+                    ADD TO CART
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- 8 -->
+        <div class="product">
+
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=800&q=90">
+            </div>
+
+            <div class="product-info">
+                <div class="tag">Best Seller</div>
+                <h3>Modern Runner</h3>
+                <p>Sporty silhouette with a modern look.</p>
+
+                <span class="price">₹3,499</span>
+                <span class="old-price">₹5,299</span>
+
+                <button class="buy-btn" onclick="addToCart()">
+                    ADD TO CART
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- OFFER -->
+<section class="offer">
+
+    <div>
+        <h2>STEP UP YOUR GAME.</h2>
+        <p>Get up to 40% OFF on selected styles.</p>
+    </div>
+
+    <a href="#products" class="shop-btn">
+        VIEW DEALS
+    </a>
+
+</section>
+
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+    <h2>Let's Talk Shoes.</h2>
+
+    <p>Have a question about our collection?</p>
+
+    <p>
+        📞
+        <a href="tel:+917620343907">
+            +91 76203 43907
+        </a>
+    </p>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        © 2026 <strong>ShoeHub</strong>. All Rights Reserved.
+    </p>
+
+    <p class="credit">
+        Designed & Developed by Shrushti Pawar
+    </p>
+
+</footer>
+
+
+<!-- TOAST -->
+<div id="toast">
+    Added to cart ✓
+</div>
+
+
+<script>
+
+let cart = 0;
+
+function addToCart(){
+
+    cart++;
+
+    document.getElementById("cartCount").innerText = cart;
+
+    let toast = document.getElementById("toast");
+
+    toast.style.display = "block";
+
+    setTimeout(function(){
+        toast.style.display = "none";
+    },2000);
+}
+
+</script>
+
+</body>
+  </html>
