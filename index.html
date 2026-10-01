@@ -5,40 +5,25 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ShoeHub</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#f6f5f2;color:#181818}
-header{background:#fff;position:sticky;top:0;z-index:5;border-bottom:1px solid #ddd}
-.top{background:#181818;color:white;text-align:center;padding:8px;font-size:12px}
-.head{max-width:1200px;margin:auto;padding:18px;display:flex;gap:15px;align-items:center}
-.logo{font-size:27px;font-weight:900}.logo i{color:#ff7043;font-style:normal}
-.search{flex:1;display:flex;background:#f1f1f1;border-radius:30px;overflow:hidden}
-.search input{flex:1;border:0;background:none;padding:13px 18px;outline:0}
-.search button,.orange{background:#ff7043;color:white;border:0;padding:12px 20px;font-weight:bold}
-.nav{display:flex;gap:8px;overflow:auto;max-width:1200px;margin:auto;padding:0 18px 12px}
-.nav button{border:0;background:white;padding:9px 15px;border-radius:20px;white-space:nowrap}.nav button:hover{background:#181818;color:white}
-main{max-width:1200px;margin:auto;padding:25px 18px}
-.hero{background:#191919;color:white;border-radius:25px;padding:55px 45px;min-height:300px}
-.hero h1{font-size:50px;max-width:600px;margin:15px 0}.hero p{color:#bbb;max-width:500px;line-height:1.6}
-.hero button{border:0;border-radius:25px;padding:14px 23px;background:#ff7043;color:white;font-weight:bold}
-h2{margin-top:40px}.cats{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
-.cat{background:white;border:1px solid #eee;border-radius:17px;padding:20px 5px;text-align:center;font-weight:bold;cursor:pointer}
-.cat b{display:block;color:#ff7043;font-size:23px;margin-bottom:8px}
-.tools{background:white;padding:15px;border-radius:15px;display:flex;gap:10px;margin:20px 0}
-.tools input,.tools select{padding:11px;border:1px solid #ddd;border-radius:10px;flex:1}
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.card{background:white;border-radius:18px;overflow:hidden;border:1px solid #eee}
-.card img{width:100%;height:210px;object-fit:cover}.info{padding:14px}.brand{font-size:11px;color:#888;font-weight:bold}
-.name{font-weight:bold;margin:6px 0}.rating{color:#d98200;font-size:13px}.price{font-weight:bold;font-size:18px;margin-top:9px}
-.old{text-decoration:line-through;color:#999;font-size:12px;margin-left:5px}.add{width:100%;border:0;background:#181818;color:white;padding:12px;border-radius:10px;margin-top:10px}
-.slide{display:flex;gap:15px;overflow:auto}.slide div{min-width:240px;background:white;padding:10px;border-radius:17px}.slide img{width:100%;height:160px;object-fit:cover;border-radius:12px}
-footer{background:#181818;color:white;margin-top:50px;padding:35px 18px;text-align:center}footer p{color:#aaa}
-.cart{position:fixed;right:-400px;top:0;width:380px;max-width:95%;height:100%;background:white;z-index:20;padding:22px;transition:.3s;box-shadow:-5px 0 20px #0003}
-.cart.open{right:0}.cartitem{display:flex;gap:10px;margin:15px 0}.cartitem img{width:70px;height:70px;object-fit:cover;border-radius:10px}
-.qty button{border:0;padding:5px;margin:3px}.close{float:right;border:0;border-radius:50%;padding:8px}
-.total{border-top:1px solid #ddd;padding-top:15px;font-size:20px;font-weight:bold;display:flex;justify-content:space-between}
-.order{width:100%;padding:14px;background:#ff7043;color:white;border:0;border-radius:10px;margin-top:15px;font-weight:bold}
-.overlay{display:none;position:fixed;inset:0;background:#0008;z-index:10}.overlay.on{display:block}
-@media(max-width:800px){.cats{grid-template-columns:repeat(4,1fr)}.products{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:38px}}
-@media(max-width:500px){.head{flex-wrap:wrap}.search{order:3;flex-basis:100%}.cats{grid-template-columns:repeat(3,1fr)}.products{gap:9px}.card img{height:160px}.hero{padding:35px 25px}}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f7f4ef;color:#171717}button,input,select{font:inherit}
+.top{background:#171717;color:#fff;text-align:center;padding:8px;font-size:12px}
+header{background:#f7f4ef;position:sticky;top:0;z-index:10;border-bottom:1px solid #ddd}
+.head{max-width:1200px;margin:auto;padding:16px 20px;display:flex;align-items:center;gap:18px}.logo{font-size:28px;font-weight:900;letter-spacing:-1px}.logo span{color:#e9673c}
+.search{flex:1;background:#fff;border:1px solid #ddd;border-radius:30px;display:flex;overflow:hidden}.search input{flex:1;border:0;outline:0;padding:13px 18px;background:transparent}.search button{border:0;background:#e9673c;color:#fff;padding:0 22px}
+.cartbtn{border:0;background:#171717;color:#fff;border-radius:25px;padding:12px 18px}
+.nav{max-width:1200px;margin:auto;padding:0 20px 12px;display:flex;gap:8px;overflow:auto}.nav button{border:0;background:transparent;padding:9px 16px;border-radius:20px;white-space:nowrap}.nav button.active,.nav button:hover{background:#e9673c;color:#fff}
+main{max-width:1200px;margin:auto;padding:25px 20px}
+.hero{min-height:330px;border-radius:28px;background:#20201e;color:#fff;padding:55px;display:flex;align-items:center;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:330px;height:330px;border-radius:50%;background:#e9673c;right:-100px;top:-80px}.hero div{position:relative;z-index:1;max-width:600px}.hero small{color:#ff9874;font-weight:bold;letter-spacing:2px}.hero h1{font-size:54px;margin:15px 0;line-height:1}.hero p{color:#bbb;line-height:1.6}.hero button{border:0;background:#e9673c;color:#fff;padding:14px 24px;border-radius:25px;font-weight:bold}
+h2{margin:38px 0 18px}.cats{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}.cat{background:#fff;border:1px solid #e5e0d9;border-radius:18px;padding:20px 5px;text-align:center;cursor:pointer;transition:.2s}.cat:hover{transform:translateY(-4px);box-shadow:0 8px 20px #0001}.cat b{display:block;color:#e9673c;font-size:24px;margin-bottom:9px}
+.trend{display:flex;gap:16px;overflow-x:auto;padding-bottom:8px;scroll-behavior:smooth}.trend::-webkit-scrollbar{height:5px}.trend>div{min-width:250px;background:#fff;border-radius:18px;padding:10px;border:1px solid #eee}.trend img{width:100%;height:165px;object-fit:cover;border-radius:13px}.trend b{display:block;padding:10px 3px 3px}
+.toolbar{display:flex;gap:10px;background:#fff;padding:14px;border-radius:15px;border:1px solid #eee}.toolbar input,.toolbar select{flex:1;border:1px solid #ddd;border-radius:10px;padding:11px;outline:0;background:#fff}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border:1px solid #e5e0d9;border-radius:18px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-5px);box-shadow:0 12px 30px #0001}.photo{position:relative}.photo img{width:100%;height:220px;object-fit:cover;display:block}.heart{position:absolute;right:10px;top:10px;border:0;background:#fff;border-radius:50%;width:36px;height:36px;font-size:19px}.info{padding:14px}.brand{font-size:11px;color:#888;font-weight:bold}.name{font-weight:bold;margin:6px 0}.rating{font-size:13px;color:#d17b00}.price{font-weight:bold;font-size:19px;margin-top:9px}.old{text-decoration:line-through;color:#999;font-size:12px;margin-left:5px}.add{width:100%;border:0;background:#171717;color:#fff;padding:12px;border-radius:10px;margin-top:12px;font-weight:bold}.add:hover{background:#e9673c}
+.banner{margin-top:35px;background:#e9673c;color:#fff;padding:28px;border-radius:22px}.banner button{border:0;padding:11px 20px;border-radius:20px;font-weight:bold}
+footer{margin-top:50px;background:#171717;color:#fff;padding:35px 20px;text-align:center}footer p{color:#aaa}
+.overlay{display:none;position:fixed;inset:0;background:#0008;z-index:20}.overlay.show{display:block}.drawer{position:fixed;right:-430px;top:0;width:410px;max-width:94%;height:100vh;background:#fff;z-index:30;padding:22px;transition:.3s;box-shadow:-10px 0 30px #0003}.drawer.open{right:0}.close{float:right;border:0;background:#eee;border-radius:50%;width:34px;height:34px}.item{display:flex;gap:10px;margin:18px 0}.item img{width:70px;height:70px;object-fit:cover;border-radius:10px}.qty button{border:0;background:#eee;padding:5px 9px;margin:5px}.total{border-top:1px solid #ddd;padding-top:15px;display:flex;justify-content:space-between;font-size:20px;font-weight:bold}.order{width:100%;border:0;background:#e9673c;color:#fff;padding:14px;border-radius:10px;margin-top:15px;font-weight:bold}
+.modal{display:none;position:fixed;z-index:40;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;width:800px;max-width:94%;max-height:90vh;overflow:auto;border-radius:22px;padding:22px}.modal.show{display:block}.detail{display:grid;grid-template-columns:1fr 1fr;gap:22px}.detail img{width:100%;height:360px;object-fit:cover;border-radius:17px}.sizes button,.colors button{border:1px solid #ddd;background:#fff;padding:9px 13px;border-radius:8px;margin:5px}.sizes button.sel,.colors button.sel{background:#171717;color:#fff}
+@media(max-width:850px){.cats{grid-template-columns:repeat(4,1fr)}.products{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:42px}}
+@media(max-width:550px){.head{flex-wrap:wrap}.search{order:3;flex-basis:100%}.cats{grid-template-columns:repeat(3,1fr)}.products{gap:9px}.photo img{height:160px}.hero{padding:35px 25px}.hero h1{font-size:38px}.detail{grid-template-columns:1fr}.detail img{height:250px}}
 </style>
 </head>
 <body>
@@ -47,148 +32,128 @@ footer{background:#181818;color:white;margin-top:50px;padding:35px 18px;text-ali
 
 <header>
 <div class="head">
-<div class="logo">SHOE<i>HUB</i></div>
-<div class="search"><input id="search" placeholder="Search shoes..."><button onclick="render()">Search</button></div>
-<button onclick="openCart()">🛒</button>
+<div class="logo">SHOE<span>HUB</span></div>
+<div class="search"><input id="search" placeholder="Search shoes, brands or categories" oninput="render()"><button onclick="goShop()">Search</button></div>
+<button class="cartbtn" onclick="openCart()">🛒 Bag</button>
 </div>
 <div class="nav" id="nav"></div>
 </header>
 
 <main>
 <section class="hero">
-<small>STEP INTO SOMETHING NEW</small>
-<h1>Move in your own direction.</h1>
-<p>Discover sneakers, running shoes, sports footwear and everyday styles at ShoeHub.</p>
-<button onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Explore Collection →</button>
+<div><small>YOUR STYLE. YOUR STEP.</small><h1>Find the pair that feels like you.</h1><p>Explore sneakers, running shoes, sports footwear and everyday favourites at ShoeHub.</p><button onclick="setCat('All')">Explore Shoes →</button></div>
 </section>
 
 <h2>Shop by Category</h2>
 <div class="cats" id="cats"></div>
 
-<h2>Trending Now</h2>
-<div class="slide" id="slide"></div>
+<h2>Trending Shoes <small style="font-size:13px;color:#888">Swipe →</small></h2>
+<div class="trend" id="trend"></div>
 
-<section id="shop">
-<h2>All Shoes</h2>
-<div class="tools">
-<input id="find" placeholder="Search products..." oninput="render()">
-<select id="sort" onchange="render()"><option value="">Sort</option><option value="l">Low Price</option><option value="h">High Price</option></select>
-</div>
+<section id="shop"><h2 id="title">All Shoes</h2>
+<div class="toolbar"><input id="filter" placeholder="Search in collection..." oninput="render()"><select id="sort" onchange="render()"><option value="">Sort By</option><option value="low">Price Low → High</option><option value="high">Price High → Low</option><option value="rate">Top Rated</option></select></div>
 <div class="products" id="products"></div>
 </section>
+
+<div class="banner"><h2 style="margin:0 0 8px">Step into your next favourite pair.</h2><p>Simple shopping. Fresh styles. ShoeHub.</p><button onclick="setCat('All')">Shop Now</button></div>
 </main>
 
-<footer>
-<h2>ShoeHub</h2>
-<p>Everyday footwear. Modern style.</p>
-<p>📞 +91 76203 43907</p>
-<p>Designed & Developed by <b>Shrushti Pawar</b></p>
-</footer>
+<footer><h2 style="margin:0">SHOEHUB</h2><p>Everyday footwear destination.</p><p>📞 +91 76203 43907</p><p>Designed & Developed by <b>Shrushti Pawar</b></p></footer>
 
-<div class="overlay" id="over" onclick="closeCart()"></div>
-<div class="cart" id="cart">
-<button class="close" onclick="closeCart()">✕</button>
-<h2>Your Bag</h2>
-<div id="items"></div>
-<div class="total"><span>Total</span><span id="total">₹0</span></div>
-<button class="order" onclick="order()">Place Order</button>
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+<div class="drawer" id="drawer">
+<button class="close" onclick="closeAll()">×</button><h2>Your Bag</h2><div id="items"></div>
+<div class="total"><span>Total</span><span id="total">₹0</span></div><button class="order" onclick="placeOrder()">Place Order</button>
 </div>
 
+<div class="modal" id="modal"><button class="close" onclick="closeAll()">×</button><div id="detail"></div></div>
+
 <script>
-const img=[
-"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80",
-"https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=600&q=80",
-"https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=600&q=80",
-"https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=600&q=80",
-"https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=600&q=80"
+const photos=[
+"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80",
+"https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=700&q=80",
+"https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=700&q=80",
+"https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=700&q=80",
+"https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=700&q=80",
+"https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=700&q=80"
 ];
 
-const shoes=[
-["Nike","Air Max Runner","Running",5499],["Adidas","Ultraboost Runner","Running",7999],
-["Puma","Velocity Nitro","Running",4999],["New Balance","Fresh Foam","Running",6299],
-["Asics","Gel Contend","Running",4299],["Nike","Dunk Low","Sneakers",6499],
-["Adidas","Forum Street","Sneakers",5999],["Puma","Suede Classic","Sneakers",4499],
-["New Balance","550 Classic","Sneakers",6999],["Reebok","Club C 85","Sneakers",3999],
-["Nike","Court Vision","Sports",4299],["Adidas","Runfalcon","Sports",3499],
-["Puma","Court Rider","Sports",3999],["Reebok","Flexagon","Sports",3699],
-["Skechers","Go Walk","Walking",4499],["Skechers","Summits","Walking",3999],
-["Adidas","Cloudfoam Walk","Walking",3799],["Puma","SoftRide","Walking",3299],
-["Nike","Everyday Casual","Casual",3999],["Puma","Caven Street","Casual",3499],
-["Adidas","Grand Court","Casual",3799],["Reebok","Royal Complete","Casual",3299],
-["Nike","Air Jordan Street","Basketball",7499],["Adidas","Hoops 3.0","Basketball",4999],
-["Puma","Rise Basketball","Basketball",5299],["Nike","Metcon Trainer","Training",6499],
-["Adidas","Dropset Trainer","Training",5799],["Puma","Fuse Training","Training",4999],
-["Reebok","Nano Training","Training",5999],["Nike","Court Mid","Basketball",5999]
-].map((x,i)=>({id:i,brand:x[0],name:x[1],cat:x[2],price:x[3],img:img[i%img.length]}));
+const raw=[
+["Nike","Air Max 270","Running",5499,4.8],["Nike","Revolution Runner","Running",3499,4.6],["Adidas","Ultraboost Runner","Running",7999,4.9],["Puma","Velocity Nitro","Running",4999,4.7],["New Balance","Fresh Foam","Running",6299,4.8],["Asics","Gel Contend","Running",4299,4.6],
+["Nike","Dunk Low","Sneakers",6499,4.8],["Adidas","Forum Street","Sneakers",5999,4.7],["Puma","Suede Classic","Sneakers",4499,4.6],["New Balance","550 Classic","Sneakers",6999,4.8],["Reebok","Club C 85","Sneakers",3999,4.6],
+["Nike","Court Vision","Sports",4299,4.6],["Adidas","Runfalcon Sport","Sports",3499,4.5],["Puma","Court Rider","Sports",3999,4.6],["Reebok","Flexagon Force","Sports",3699,4.5],
+["Skechers","Go Walk Comfort","Walking",4499,4.7],["Skechers","Summits Walking","Walking",3999,4.6],["Adidas","Cloudfoam Walk","Walking",3799,4.6],["Puma","SoftRide Walk","Walking",3299,4.5],
+["Nike","Everyday Casual","Casual",3999,4.6],["Puma","Caven Street","Casual",3499,4.5],["Adidas","Grand Court","Casual",3799,4.7],["Reebok","Royal Complete","Casual",3299,4.5],
+["Nike","Air Jordan Street","Basketball",7499,4.9],["Nike","Court Mid","Basketball",5999,4.7],["Adidas","Hoops 3.0","Basketball",4999,4.6],["Puma","Rise Basketball","Basketball",5299,4.7],
+["Nike","Metcon Trainer","Training",6499,4.8],["Adidas","Dropset Trainer","Training",5799,4.7],["Puma","Fuse Training","Training",4999,4.6],["Reebok","Nano Training","Training",5999,4.8]
+];
 
-let category="All",bag=[];
+const shoes=raw.map((x,i)=>({id:i,brand:x[0],name:x[1],cat:x[2],price:x[3],rate:x[4],img:photos[i%photos.length]}));
+let cat="All",bag=[],wish=[];
 
-const cats=[["Running","RUN"],["Sneakers","ST"],["Sports","SP"],["Casual","CA"],["Walking","WK"],["Basketball","BB"],["Training","TR"]];
-
-cats.forEach(c=>{
-document.getElementById("cats").innerHTML+=`<div class="cat" onclick="setCat('${c[0]}')"><b>${c[1]}</b>${c[0]}</div>`;
+["All","Running","Sneakers","Sports","Casual","Walking","Basketball","Training"].forEach(x=>{
+nav.innerHTML+=`<button id="n${x}" onclick="setCat('${x}')">${x}</button>`;
 });
 
-["All","Running","Sneakers","Sports","Casual","Walking","Basketball","Training"].forEach(c=>{
-nav.innerHTML+=`<button onclick="setCat('${c}')">${c}</button>`;
+[["Running","RUN"],["Sneakers","ST"],["Sports","SP"],["Casual","CA"],["Walking","WK"],["Basketball","BB"],["Training","TR"]].forEach(x=>{
+cats.innerHTML+=`<div class="cat" onclick="setCat('${x[0]}')"><b>${x[1]}</b>${x[0]}</div>`;
 });
 
-slide.innerHTML=shoes.slice(0,10).map(x=>`<div><img src="${x.img}"><b>${x.brand} ${x.name}</b><br>₹${x.price}</div>`).join("");
+trend.innerHTML=shoes.slice(0,10).map(x=>`<div><img src="${x.img}"><b>${x.brand} ${x.name}</b>₹${x.price.toLocaleString()}</div>`).join("");
 
-function setCat(c){
-category=c;
-document.getElementById("shop").scrollIntoView({behavior:"smooth"});
+function setCat(x){
+cat=x;
+document.getElementById("title").textContent=x=="All"?"All Shoes":x+" Shoes";
+document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
+document.getElementById("n"+x).classList.add("active");
+filter.value="";search.value="";
 render();
+goShop();
 }
+
+function goShop(){document.getElementById("shop").scrollIntoView({behavior:"smooth",block:"start"})}
 
 function render(){
-let q=(search.value+" "+find.value).toLowerCase();
-let a=shoes.filter(x=>(category=="All"||x.cat==category)&&
-(!q||(`${x.brand} ${x.name} ${x.cat}`).toLowerCase().includes(q)));
-if(sort.value=="l")a.sort((x,y)=>x.price-y.price);
-if(sort.value=="h")a.sort((x,y)=>y.price-x.price);
+let q=(search.value+" "+filter.value).toLowerCase();
+let a=shoes.filter(x=>(cat=="All"||x.cat==cat)&&(!q||`${x.brand} ${x.name} ${x.cat}`.toLowerCase().includes(q)));
+if(sort.value=="low")a.sort((x,y)=>x.price-y.price);
+if(sort.value=="high")a.sort((x,y)=>y.price-x.price);
+if(sort.value=="rate")a.sort((x,y)=>y.rate-x.rate);
 products.innerHTML=a.map(x=>`
-<div class="card">
-<img src="${x.img}">
-<div class="info">
-<span class="brand">${x.brand}</span>
-<div class="name">${x.name}</div>
-<div class="rating">★ 4.7 (120+)</div>
+<div class="card"><div class="photo"><img src="${x.img}"><button class="heart" onclick="toggleWish(${x.id})">${wish.includes(x.id)?"♥":"♡"}</button></div>
+<div class="info"><span class="brand">${x.brand}</span><div class="name">${x.name}</div><div class="rating">★ ${x.rate} • 120+ reviews</div>
 <div class="price">₹${x.price.toLocaleString()} <span class="old">₹${(x.price*1.2|0).toLocaleString()}</span></div>
-<button class="add" onclick="add(${x.id})">Add to Bag</button>
-</div></div>`).join("");
+<button class="add" onclick="details(${x.id})">View Product</button></div></div>`).join("");
 }
 
-function add(id){
-let x=bag.find(a=>a.id==id);
-x?x.q++:bag.push({id:id,q:1});
-openCart();
+function details(id){
+let x=shoes[id];
+detail.innerHTML=`<div class="detail"><img src="${x.img}"><div><span class="brand">${x.brand}</span><h2>${x.name}</h2><div class="rating">★ ${x.rate} Excellent Rating</div><div class="price">₹${x.price.toLocaleString()}</div><p>Stylish and comfortable footwear designed for everyday movement.</p>
+<div class="colors"><b>Colour</b><br><button class="sel">Black</button><button>White</button><button>Grey</button></div>
+<div class="sizes"><b>Size</b><br>${[6,7,8,9,10].map(n=>`<button onclick="this.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('sel'));this.classList.add('sel')">${n}</button>`).join("")}</div>
+<button class="add" onclick="add(${id});closeAll()">Add to Bag • ₹${x.price.toLocaleString()}</button></div></div>`;
+modal.classList.add("show");overlay.classList.add("show");
 }
+
+function toggleWish(id){wish.includes(id)?wish=wish.filter(x=>x!=id):wish.push(id);render()}
+
+function add(id){let x=bag.find(a=>a.id==id);x?x.q++:bag.push({id:id,q:1});openCart()}
 
 function openCart(){
-over.classList.add("on");cart.classList.add("open");
-items.innerHTML=bag.length?bag.map(a=>{
-let x=shoes[a.id];
-return `<div class="cartitem"><img src="${x.img}"><div><b>${x.brand} ${x.name}</b><br>₹${x.price}<div class="qty">
-<button onclick="change(${a.id},-1)">−</button>${a.q}<button onclick="change(${a.id},1)">+</button>
-</div></div></div>`}).join(""):"<p>Your bag is empty.</p>";
-total.innerText="₹"+bag.reduce((s,a)=>s+shoes[a.id].price*a.q,0).toLocaleString();
+items.innerHTML=bag.length?bag.map(a=>{let x=shoes[a.id];return `<div class="item"><img src="${x.img}"><div><b>${x.brand} ${x.name}</b><br>₹${x.price.toLocaleString()}<div class="qty"><button onclick="qty(${a.id},-1)">−</button>${a.q}<button onclick="qty(${a.id},1)">+</button></div></div></div>`}).join(""):"<p>Your bag is empty.</p>";
+total.textContent="₹"+bag.reduce((s,a)=>s+shoes[a.id].price*a.q,0).toLocaleString();
+drawer.classList.add("open");overlay.classList.add("show");
 }
 
-function change(id,n){
-let x=bag.find(a=>a.id==id);
-x.q+=n;if(x.q<=0)bag=bag.filter(a=>a.id!=id);
-openCart();
-}
+function qty(id,n){let x=bag.find(a=>a.id==id);x.q+=n;if(x.q<1)bag=bag.filter(a=>a.id!=id);openCart()}
 
-function closeCart(){over.classList.remove("on");cart.classList.remove("open")}
+function placeOrder(){if(!bag.length){alert("Your bag is empty!");return}bag=[];closeAll();alert("✓ Order Placed Successfully! Thank you for shopping with ShoeHub.");}
 
-function order(){
-if(!bag.length)return alert("Your bag is empty!");
-bag=[];closeCart();alert("✓ Order Placed Successfully! Thank you for shopping with ShoeHub.");
-}
+function closeAll(){drawer.classList.remove("open");modal.classList.remove("show");overlay.classList.remove("show")}
 
+document.getElementById("nAll").classList.add("active");
 render();
 </script>
 </body>
-  </html>
+</html>
