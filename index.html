@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ShoeHub - Online Shoe Store</title>
+<title>ShoeHub | Step Into Style</title>
 
 <style>
 *{
@@ -19,27 +19,38 @@ html{
 }
 
 body{
-  background:#f5f5f5;
+  background:#f7f7f7;
   color:#171717;
 }
 
-/* HEADER */
+button,
+input,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* ================= HEADER ================= */
+
 header{
-  background:#111;
-  color:white;
-  padding:16px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
   position:sticky;
   top:0;
   z-index:1000;
-  box-shadow:0 3px 15px rgba(0,0,0,.2);
+  background:#111;
+  color:white;
+  padding:17px 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 3px 20px rgba(0,0,0,.2);
 }
 
 .logo{
-  font-size:27px;
-  font-weight:800;
+  font-size:28px;
+  font-weight:900;
   letter-spacing:-1px;
 }
 
@@ -49,15 +60,14 @@ header{
 
 nav{
   display:flex;
-  align-items:center;
-  gap:24px;
+  gap:25px;
 }
 
 nav a{
   color:white;
   text-decoration:none;
   font-size:14px;
-  font-weight:600;
+  font-weight:bold;
   transition:.3s;
 }
 
@@ -65,28 +75,76 @@ nav a:hover{
   color:#ff4d00;
 }
 
-/* HERO */
-.hero{
-  min-height:500px;
+.header-actions{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.header-icon{
+  width:42px;
+  height:42px;
+  border:none;
+  border-radius:50%;
+  background:#222;
+  color:white;
+  font-size:18px;
+  position:relative;
+}
+
+.header-icon:hover{
+  background:#ff4d00;
+}
+
+.cart-count{
+  position:absolute;
+  top:-4px;
+  right:-3px;
+  background:#ff4d00;
+  color:white;
+  width:19px;
+  height:19px;
+  border-radius:50%;
+  font-size:11px;
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
+  font-weight:bold;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  min-height:590px;
+  display:flex;
+  align-items:center;
+  padding:80px 7%;
   color:white;
-  padding:70px 20px;
   background:
-    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.65)),
-    url("https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1800&q=85")
+    linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.3)),
+    url("https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1800&q=90")
     center/cover;
 }
 
 .hero-content{
-  max-width:800px;
+  max-width:650px;
+}
+
+.hero-tag{
+  display:inline-block;
+  background:#ff4d00;
+  padding:8px 15px;
+  border-radius:30px;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:20px;
+  letter-spacing:1px;
 }
 
 .hero h1{
-  font-size:58px;
-  margin-bottom:15px;
+  font-size:68px;
+  line-height:1;
+  margin-bottom:22px;
   font-weight:900;
 }
 
@@ -95,107 +153,216 @@ nav a:hover{
 }
 
 .hero p{
-  font-size:20px;
+  color:#ddd;
+  font-size:19px;
+  line-height:1.6;
   margin-bottom:30px;
-  color:#eee;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
 }
 
 .btn{
-  background:#ff4d00;
-  color:white;
   border:none;
-  padding:15px 32px;
+  padding:15px 28px;
   border-radius:30px;
   font-weight:bold;
-  cursor:pointer;
-  font-size:15px;
+  background:#ff4d00;
+  color:white;
   transition:.3s;
 }
 
 .btn:hover{
+  transform:translateY(-3px);
   background:#e64100;
-  transform:translateY(-2px);
 }
 
-/* SECTION */
-.section{
-  padding:65px 6%;
+.btn-outline{
+  background:transparent;
+  border:1px solid white;
 }
 
-.section h2{
-  text-align:center;
-  margin-bottom:12px;
-  font-size:34px;
-}
-
-.section-subtitle{
-  text-align:center;
-  color:#777;
-  margin-bottom:35px;
-}
-
-/* SEARCH + FILTER */
-.shop-tools{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-bottom:35px;
-}
-
-.search-box{
-  width:300px;
-  padding:13px 18px;
-  border:1px solid #ddd;
-  border-radius:25px;
-  outline:none;
+.btn-outline:hover{
   background:white;
+  color:#111;
+}
+
+/* ================= FEATURES ================= */
+
+.features{
+  background:white;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  padding:25px 7%;
+  gap:20px;
+  border-bottom:1px solid #eee;
+}
+
+.feature{
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+
+.feature-icon{
+  font-size:27px;
+}
+
+.feature h4{
   font-size:14px;
+  margin-bottom:4px;
 }
 
-.filter-btn{
-  border:none;
-  padding:12px 18px;
-  border-radius:22px;
-  background:#fff;
-  border:1px solid #ddd;
+.feature p{
+  font-size:12px;
+  color:#777;
+}
+
+/* ================= GENERAL ================= */
+
+.section{
+  padding:75px 6%;
+}
+
+.section-heading{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.section-heading h2{
+  font-size:36px;
+  margin-bottom:9px;
+}
+
+.section-heading p{
+  color:#777;
+}
+
+/* ================= CATEGORIES ================= */
+
+.categories{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.category{
+  height:190px;
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
   cursor:pointer;
-  font-weight:bold;
-  transition:.3s;
 }
 
-.filter-btn:hover,
-.filter-btn.active{
+.category img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.5s;
+}
+
+.category:hover img{
+  transform:scale(1.08);
+}
+
+.category-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(transparent,rgba(0,0,0,.8));
+  display:flex;
+  align-items:flex-end;
+  padding:20px;
+  color:white;
+}
+
+.category-overlay h3{
+  font-size:20px;
+}
+
+/* ================= SHOP TOOLBAR ================= */
+
+.shop-toolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-bottom:30px;
+}
+
+.search{
+  flex:1;
+  min-width:240px;
+  padding:15px 20px;
+  border:1px solid #ddd;
+  border-radius:30px;
+  background:white;
+  outline:none;
+}
+
+.search:focus{
+  border-color:#ff4d00;
+}
+
+.filters{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.filter{
+  padding:11px 16px;
+  border:1px solid #ddd;
+  background:white;
+  border-radius:25px;
+  font-weight:bold;
+  font-size:13px;
+}
+
+.filter.active,
+.filter:hover{
   background:#111;
   color:white;
 }
 
-/* PRODUCTS */
+.sort{
+  padding:12px 16px;
+  border:1px solid #ddd;
+  border-radius:25px;
+  background:white;
+  outline:none;
+}
+
+/* ================= PRODUCTS ================= */
+
 .products{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:25px;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
 }
 
 .card{
   background:white;
   border-radius:18px;
   overflow:hidden;
-  box-shadow:0 5px 20px rgba(0,0,0,.08);
-  transition:.35s;
   position:relative;
+  box-shadow:0 5px 20px rgba(0,0,0,.06);
+  transition:.3s;
 }
 
 .card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 12px 30px rgba(0,0,0,.14);
+  transform:translateY(-7px);
+  box-shadow:0 15px 35px rgba(0,0,0,.12);
 }
 
 .product-image{
-  height:230px;
-  background:#f0f0f0;
-  overflow:hidden;
+  height:245px;
+  background:#eee;
   position:relative;
+  overflow:hidden;
 }
 
 .product-image img{
@@ -211,831 +378,12 @@ nav a:hover{
 
 .badge{
   position:absolute;
-  top:14px;
-  left:14px;
+  top:13px;
+  left:13px;
   background:#ff4d00;
   color:white;
   padding:6px 10px;
   border-radius:15px;
-  font-size:11px;
+  font-size:10px;
   font-weight:bold;
-}
-
-.product-info{
-  padding:18px;
-}
-
-.brand{
-  color:#888;
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  font-weight:bold;
-}
-
-.product-info h3{
-  margin:7px 0;
-  font-size:18px;
-}
-
-.description{
-  color:#777;
-  font-size:13px;
-  min-height:34px;
-}
-
-.rating{
-  margin:10px 0;
-  font-size:13px;
-}
-
-.rating span{
-  color:#ff9d00;
-}
-
-.price-row{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  margin:12px 0;
-}
-
-.price{
-  font-size:19px;
-  font-weight:800;
-}
-
-.old-price{
-  color:#999;
-  text-decoration:line-through;
-  font-size:13px;
-}
-
-.cart-btn{
-  width:100%;
-  padding:11px;
-  border:none;
-  border-radius:25px;
-  background:#111;
-  color:white;
-  cursor:pointer;
-  font-weight:bold;
-  transition:.3s;
-}
-
-.cart-btn:hover{
-  background:#ff4d00;
-}
-
-/* OFFER */
-.offer{
-  background:
-    linear-gradient(120deg,#111,#252525);
-  color:white;
-  text-align:center;
-  padding:60px 20px;
-}
-
-.offer h2{
-  font-size:35px;
-  margin-bottom:10px;
-}
-
-.offer p{
-  color:#ddd;
-  margin-bottom:22px;
-}
-
-/* CONTACT */
-.contact{
-  text-align:center;
-  background:white;
-}
-
-.contact p{
-  margin:8px 0;
-  color:#555;
-}
-
-/* CART */
-#cart{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  background:#ff4d00;
-  color:white;
-  padding:15px 22px;
-  border-radius:30px;
-  box-shadow:0 5px 20px rgba(0,0,0,.25);
-  font-weight:bold;
-  z-index:999;
-  cursor:pointer;
-}
-
-#cart:hover{
-  background:#111;
-}
-
-/* TOAST */
-#toast{
-  position:fixed;
-  top:85px;
-  right:20px;
-  background:#111;
-  color:white;
-  padding:15px 20px;
-  border-radius:10px;
-  display:none;
-  z-index:2000;
-  box-shadow:0 5px 20px rgba(0,0,0,.25);
-}
-
-/* FOOTER */
-footer{
-  background:#111;
-  color:white;
-  text-align:center;
-  padding:25px;
-}
-
-footer p{
-  margin:5px;
-  color:#bbb;
-  font-size:13px;
-}
-
-/* MOBILE */
-@media(max-width:700px){
-
-  header{
-    padding:14px 5%;
-    flex-direction:column;
-    gap:13px;
-  }
-
-  nav{
-    gap:13px;
-    flex-wrap:wrap;
-    justify-content:center;
-  }
-
-  nav a{
-    font-size:12px;
-  }
-
-  .hero{
-    min-height:430px;
-  }
-
-  .hero h1{
-    font-size:40px;
-  }
-
-  .hero p{
-    font-size:16px;
-  }
-
-  .section{
-    padding:45px 5%;
-  }
-
-  .products{
-    grid-template-columns:1fr;
-  }
-
-  .search-box{
-    width:100%;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<!-- HEADER -->
-<header>
-
-  <div class="logo">
-    👟 Shoe<span>Hub</span>
-  </div>
-
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#products">Products</a>
-    <a href="#offers">Offers</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-</header>
-
-
-<!-- HERO -->
-<section class="hero" id="home">
-
-  <div class="hero-content">
-
-    <h1>Step Into <span>Style</span></h1>
-
-    <p>
-      Discover premium footwear, trending sneakers
-      and everyday comfort at ShoeHub.
-    </p>
-
-    <button class="btn" onclick="showProducts()">
-      Shop Now →
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- PRODUCTS -->
-<section class="section" id="products">
-
-  <h2>Trending Footwear</h2>
-
-  <p class="section-subtitle">
-    Explore our latest collection of sneakers, sports shoes and lifestyle footwear.
-  </p>
-
-
-  <!-- SEARCH -->
-  <div class="shop-tools">
-
-    <input
-      type="text"
-      class="search-box"
-      id="search"
-      placeholder="🔍 Search shoes or brands..."
-      onkeyup="searchProducts()"
-    >
-
-    <button class="filter-btn active" onclick="filterProducts('all',this)">
-      All
-    </button>
-
-    <button class="filter-btn" onclick="filterProducts('Nike',this)">
-      Nike
-    </button>
-
-    <button class="filter-btn" onclick="filterProducts('Adidas',this)">
-      Adidas
-    </button>
-
-    <button class="filter-btn" onclick="filterProducts('Puma',this)">
-      Puma
-    </button>
-
-    <button class="filter-btn" onclick="filterProducts('New Balance',this)">
-      New Balance
-    </button>
-
-  </div>
-
-
-  <div class="products" id="productGrid">
-
-
-    <!-- NIKE -->
-    <div class="card" data-brand="Nike">
-
-      <div class="product-image">
-        <span class="badge">BESTSELLER</span>
-
-        <img
-          src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85"
-          alt="Nike style running shoe"
-        >
-      </div>
-
-      <div class="product-info">
-
-        <div class="brand">Nike</div>
-
-        <h3>Air Max Runner</h3>
-
-        <p class="description">
-          Lightweight everyday running sneaker.
-        </p>
-
-        <div class="rating">
-          <span>★★★★★</span> 4.8
-        </div>
-
-        <div class="price-row">
-          <div class="price">₹7,999</div>
-          <div class="old-price">₹9,999</div>
-        </div>
-
-        <button class="cart-btn"
-          onclick="addCart('Nike Air Max Runner')">
-          Add to Cart
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- ADIDAS -->
-    <div class="card" data-brand="Adidas">
-
-      <div class="product-image">
-        <span class="badge">20% OFF</span>
-
-        <img
-          src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=900&q=85"
-          alt="Adidas style sneaker"
-        >
-      </div>
-
-      <div class="product-info">
-
-        <div class="brand">Adidas</div>
-
-        <h3>Street Runner</h3>
-
-        <p class="description">
-          Modern streetwear sneaker for daily use.
-        </p>
-
-        <div class="rating">
-          <span>★★★★★</span> 4.7
-        </div>
-
-        <div class="price-row">
-          <div class="price">₹6,499</div>
-          <div class="old-price">₹8,199</div>
-        </div>
-
-        <button class="cart-btn"
-          onclick="addCart('Adidas Street Runner')">
-          Add to Cart
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- PUMA -->
-    <div class="card" data-brand="Puma">
-
-      <div class="product-image">
-        <span class="badge">NEW</span>
-
-        <img
-          src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=900&q=85"
-          alt="Puma style sneaker"
-        >
-      </div>
-
-      <div class="product-info">
-
-        <div class="brand">Puma</div>
-
-        <h3>RS Street Sneaker</h3>
-
-        <p class="description">
-          Bold lifestyle sneaker with a sporty look.
-        </p>
-
-        <div class="rating">
-          <span>★★★★★</span> 4.6
-        </div>
-
-        <div class="price-row">
-          <div class="price">₹5,999</div>
-          <div class="old-price">₹7,499</div>
-        </div>
-
-        <button class="cart-btn"
-          onclick="addCart('Puma RS Street Sneaker')">
-          Add to Cart
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- NEW BALANCE -->
-    <div class="card" data-brand="New Balance">
-
-      <div class="product-image">
-        <span class="badge">TRENDING</span>
-
-        <img
-          src="https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=900&q=85"
-          alt="New Balance style sneaker"
-        >
-      </div>
-
-      <div class="product-info">
-
-        <div class="brand">New Balance</div>
-
-        <h3>Classic 574 Runner</h3>
-
-        <p class="description">
-          Comfortable classic sneaker for everyday wear.
-        </p>
-
-        <div class="rating">
-          <span>★★★★★</span> 4.8
-        </div>
-
-        <div class="price-row">
-          <div class="price">₹8,499</div>
-          <div class="old-price">₹10,499</div>
-        </div>
-
-        <button class="cart-btn"
-          onclick="addCart('New Balance Classic Runner')">
-          Add to Cart
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- NIKE -->
-    <div class="card" data-brand="Nike">
-
-      <div class="product-image">
-
-        <img
-          src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=900&q=85"
-          alt="Nike style sports shoe"
-        >
-
-      </div>
-
-      <div class="product-info">
-
-        <div class="brand">Nike</div>
-
-        <h3>Sport Performance</h3>
-
-        <p class="description">
-          Cushioned sports shoe for active lifestyles.
-        </p>
-
-        <div class="rating">
-          <span>★★★★★</span> 4.7
-        </div>
-
-        <div class="price-row">
-          <div class="price">₹6,999</div>
-          <div class="old-price">₹8,499</div>
-        </div>
-
-        <button class="cart-btn"
-          onclick="addCart('Nike Sport Performance')">
-          Add to Cart
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- ADIDAS -->
-    <div class="card" data-brand="Adidas">
-
-      <div class="product-image">
-
-        <img
-          src="https://images.unsplash.com/photo-1512374382149-233c42b6a83b?auto=format&fit=crop&w=900&q=85"
-          alt="Adidas style casual sneaker"
-        >
-
-      </div>
-
-      <div class="product-info">
-
-        <div class="brand">Adidas</div>
-
-        <h3>Urban Classic</h3>
-
-        <p class="description">
-          Clean and comfortable casual footwear.
-        </p>
-
-        <div class="rating">
-          <span>★★★★★</span> 4.5
-        </div>
-
-        <div class="price-row">
-          <div class="price">₹5,499</div>
-          <div class="old-price">₹6,999</div>
-        </div>
-
-        <button class="cart-btn"
-          onclick="addCart('Adidas Urban Classic')">
-          Add to Cart
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- PUMA -->
-    <div class="card" data-brand="Puma">
-
-      <div class="product-image">
-
-        <img
-          src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=900&q=85"
-          alt="Puma style casual shoe"
-        >
-
-      </div>
-
-      <div class="product-info">
-
-        <div class="brand">Puma</div>
-
-        <h3>Classic Lifestyle</h3>
-
-        <p class="description">
-          Minimal everyday sneaker with a classic design.
-        </p>
-
-        <div class="rating">
-          <span>★★★★★</span> 4.6
-        </div>
-
-        <div class="price-row">
-          <div class="price">₹4,999</div>
-          <div class="old-price">₹6,499</div>
-        </div>
-
-        <button class="cart-btn"
-          onclick="addCart('Puma Classic Lifestyle')">
-          Add to Cart
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- NEW BALANCE -->
-    <div class="card" data-brand="New Balance">
-
-      <div class="product-image">
-
-        <img
-          src="https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=900&q=85"
-          alt="New Balance style running shoe"
-        >
-
-      </div>
-
-      <div class="product-info">
-
-        <div class="brand">New Balance</div>
-
-        <h3>Fresh Foam Runner</h3>
-
-        <p class="description">
-          Soft cushioning for comfortable daily walking.
-        </p>
-
-        <div class="rating">
-          <span>★★★★★</span> 4.8
-        </div>
-
-        <div class="price-row">
-          <div class="price">₹7,499</div>
-          <div class="old-price">₹9,199</div>
-        </div>
-
-        <button class="cart-btn"
-          onclick="addCart('New Balance Fresh Foam Runner')">
-          Add to Cart
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- OFFERS -->
-<section class="offer" id="offers">
-
-  <h2>🔥 Special ShoeHub Offer</h2>
-
-  <p>
-    Get up to 30% OFF on selected footwear.
-    Limited-time student shopping deals!
-  </p>
-
-  <button class="btn" onclick="showProducts()">
-    Explore Deals
-  </button>
-
-</section>
-
-
-<!-- CONTACT -->
-<section class="section contact" id="contact">
-
-  <h2>Contact Us</h2>
-
-  <p>Email: support@shoehub.com</p>
-
-  <p>Phone: +91 76203 43907</p>
-
-  <br>
-
-  <button class="btn" onclick="contactMessage()">
-    Send Enquiry
-  </button>
-
-</section>
-
-
-<!-- CART -->
-<div id="cart" onclick="showCart()">
-  🛒 Cart:
-  <span id="count">0</span>
-</div>
-
-
-<!-- TOAST -->
-<div id="toast"></div>
-
-
-<!-- FOOTER -->
-<footer>
-
-  <p>© 2026 ShoeHub | Online Shoe Store</p>
-
-  <p>Developed using HTML, CSS & JavaScript</p>
-
-</footer>
-
-
-<script>
-
-let cartCount = 0;
-
-
-/* ADD TO CART */
-
-function addCart(product){
-
-  cartCount++;
-
-  document.getElementById("count").innerText = cartCount;
-
-  showToast(product + " added to cart! 🛒");
-
-}
-
-
-/* TOAST MESSAGE */
-
-function showToast(message){
-
-  const toast = document.getElementById("toast");
-
-  toast.innerText = message;
-
-  toast.style.display = "block";
-
-  setTimeout(function(){
-
-    toast.style.display = "none";
-
-  },2200);
-
-}
-
-
-/* SHOP NOW */
-
-function showProducts(){
-
-  document.getElementById("products").scrollIntoView({
-    behavior:"smooth"
-  });
-
-}
-
-
-/* CONTACT */
-
-function contactMessage(){
-
-  showToast("Thank you! Your enquiry has been received. ❤️");
-
-}
-
-
-/* SHOW CART */
-
-function showCart(){
-
-  if(cartCount === 0){
-
-    alert("Your cart is empty. Add a shoe first! 👟");
-
-  }else{
-
-    alert(
-      "You have " +
-      cartCount +
-      " item(s) in your ShoeHub cart. 🛒"
-    );
-
-  }
-
-}
-
-
-/* BRAND FILTER */
-
-function filterProducts(brand,button){
-
-  const cards =
-    document.querySelectorAll(".card");
-
-  const buttons =
-    document.querySelectorAll(".filter-btn");
-
-  buttons.forEach(function(btn){
-
-    btn.classList.remove("active");
-
-  });
-
-  button.classList.add("active");
-
-
-  cards.forEach(function(card){
-
-    if(
-      brand === "all" ||
-      card.dataset.brand === brand
-    ){
-
-      card.style.display = "block";
-
-    }else{
-
-      card.style.display = "none";
-
-    }
-
-  });
-
-}
-
-
-/* SEARCH */
-
-function searchProducts(){
-
-  const search =
-    document
-      .getElementById("search")
-      .value
-      .toLowerCase();
-
-  const cards =
-    document.querySelectorAll(".card");
-
-  cards.forEach(function(card){
-
-    const text =
-      card.innerText.toLowerCase();
-
-    if(text.includes(search)){
-
-      card.style.display = "block";
-
-    }else{
-
-      card.style.display = "none";
-
-    }
-
-  });
-
-}
-
-</script>
-
-</body>
-  </html>
-  
+  z-index:2;
