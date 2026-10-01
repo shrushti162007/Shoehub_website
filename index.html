@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShoeHub - Online Shoe Store</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f6f6f6;
+  color:#222;
+}
+
+header{
+  background:#111;
+  color:white;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:bold;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  font-size:14px;
+}
+
+.hero{
+  background:linear-gradient(135deg,#111,#444);
+  color:white;
+  text-align:center;
+  padding:70px 20px;
+}
+
+.hero h1{
+  font-size:45px;
+  margin-bottom:15px;
+}
+
+.hero p{
+  font-size:18px;
+  margin-bottom:25px;
+}
+
+.btn{
+  background:white;
+  color:#111;
+  border:none;
+  padding:13px 25px;
+  border-radius:25px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.section{
+  padding:45px 7%;
+}
+
+.section h2{
+  text-align:center;
+  margin-bottom:30px;
+  font-size:30px;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:22px;
+}
+
+.card{
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 4px 15px rgba(0,0,0,.1);
+  padding-bottom:20px;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.shoe{
+  height:180px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:75px;
+  background:#eee;
+}
+
+.card h3{
+  margin:15px 15px 8px;
+}
+
+.card p{
+  margin:0 15px 10px;
+  color:#666;
+}
+
+.price{
+  font-weight:bold;
+  color:#111 !important;
+  font-size:18px;
+}
+
+.cart-btn{
+  margin-left:15px;
+  padding:10px 18px;
+  border:none;
+  border-radius:20px;
+  background:#111;
+  color:white;
+  cursor:pointer;
+}
+
+.offer{
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:35px 20px;
+  margin-top:10px;
+}
+
+.contact{
+  text-align:center;
+  background:white;
+}
+
+footer{
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:30px;
+}
+
+#cart{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#111;
+  color:white;
+  padding:15px 20px;
+  border-radius:30px;
+  box-shadow:0 4px 15px rgba(0,0,0,.3);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">👟 ShoeHub</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#offers">Offers</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h1>Step Into Style</h1>
+  <p>Discover comfortable and stylish shoes for every occasion.</p>
+  <button class="btn" onclick="showProducts()">Shop Now</button>
+</section>
+
+<section class="section" id="products">
+  <h2>Our Products</h2>
+
+  <div class="products">
+
+    <div class="card">
+      <div class="shoe">👟</div>
+      <h3>Urban Runner</h3>
+      <p>Comfortable running shoes</p>
+      <p class="price">₹1,999</p>
+      <button class="cart-btn" onclick="addCart('Urban Runner')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <div class="shoe">🥾</div>
+      <h3>Mountain Trek</h3>
+      <p>Strong outdoor footwear</p>
+      <p class="price">₹2,499</p>
+      <button class="cart-btn" onclick="addCart('Mountain Trek')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <div class="shoe">👠</div>
+      <h3>Elegant Heels</h3>
+      <p>Stylish women's footwear</p>
+      <p class="price">₹1,799</p>
+      <button class="cart-btn" onclick="addCart('Elegant Heels')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <div class="shoe">👞</div>
+      <h3>Classic Formal</h3>
+      <p>Perfect for formal occasions</p>
+      <p class="price">₹2,199</p>
+      <button class="cart-btn" onclick="addCart('Classic Formal')">Add to Cart</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="offer" id="offers">
+  <h2>🔥 Special Offer</h2>
+  <p>Get up to 30% OFF on selected footwear!</p>
+</section>
+
+<section class="section contact" id="contact">
+  <h2>Contact Us</h2>
+  <p>Email: support@shoehub.com</p>
+  <p>Phone: +91 98765 43210</p>
+  <br>
+  <button class="cart-btn" onclick="contactMessage()">Send Enquiry</button>
+</section>
+
+<div id="cart">🛒 Cart: <span id="count">0</span></div>
+
+<footer>
+  <p>© 2026 ShoeHub | Online Shoe Store</p>
+  <p>Developed using HTML, CSS & JavaScript</p>
+</footer>
+
+<script>
+let cartCount = 0;
+
+function addCart(product){
+  cartCount++;
+  document.getElementById("count").innerText = cartCount;
+  alert(product + " added to cart!");
+}
+
+function showProducts(){
+  document.getElementById("products").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+function contactMessage(){
+  alert("Thank you! Your enquiry has been received.");
+}
+</script>
+
+</body>
+  </html>
