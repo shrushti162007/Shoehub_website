@@ -1,146 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ShoeHub | Step Into Style</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;background:#080808;color:#fff}button,input{font:inherit}button{cursor:pointer}nav{position:sticky;top:0;z-index:9;background:#0b0b0bdd;backdrop-filter:blur(12px);padding:18px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222}.logo{font-size:25px;font-weight:900}.logo b{color:#b7ff35}.links{display:flex;gap:25px}.links a{color:#aaa;text-decoration:none}.navbtn{background:#151515;color:#fff;border:1px solid #333;border-radius:25px;padding:9px 14px}.hero{min-height:650px;padding:80px 7%;display:flex;align-items:center;justify-content:space-between;background:radial-gradient(circle at 80%,#263515,transparent 40%)}.heroText{max-width:560px}.small{color:#b7ff35;letter-spacing:3px;font-size:12px;font-weight:bold}.hero h1{font-size:clamp(55px,9vw,100px);line-height:.85;margin:20px 0;letter-spacing:-6px}.hero p{color:#888;line-height:1.7;margin-bottom:25px}.hero img{width:45%;max-width:600px;filter:drop-shadow(0 30px 25px #000);transform:rotate(-12deg);animation:f 4s infinite ease-in-out}@keyframes f{50%{transform:rotate(-7deg) translateY(-15px)}}.btn{border:0;border-radius:30px;padding:14px 24px;background:#b7ff35;color:#000;font-weight:bold}.dark{background:#151515;color:#fff;border:1px solid #333;margin-left:8px}section{padding:75px 6%}.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:25px}.head h2{font-size:45px}.head p{color:#777;max-width:400px}.search{width:100%;background:#111;border:1px solid #292929;border-radius:30px;padding:14px 20px;color:#fff;margin-bottom:18px}.cats{display:flex;gap:8px;overflow:auto}.cat{padding:10px 18px;border-radius:25px;background:#111;border:1px solid #333;color:#aaa}.cat.on,.cat:hover{background:#b7ff35;color:#000}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:25px}.card{background:#111;border:1px solid #252525;border-radius:18px;overflow:hidden;transition:.3s}.card:hover{transform:translateY(-7px)}.pic{height:230px;background:#181818;position:relative;display:flex;align-items:center;justify-content:center}.pic img{width:95%;height:95%;object-fit:contain;filter:drop-shadow(0 18px 15px #000)}.heart{position:absolute;right:10px;top:10px;background:#000;color:#fff;border:1px solid #444;border-radius:50%;width:38px;height:38px}.heart.on{background:#ff3d69}.badge{position:absolute;left:10px;top:10px;background:#b7ff35;color:#000;padding:6px 9px;border-radius:15px;font-size:10px;font-weight:bold}.info{padding:16px}.info small{color:#777}.info h3{margin:7px 0}.stars{color:#b7ff35;font-size:12px}.price{font-weight:bold;font-size:18px;margin-top:10px}.old{color:#666;text-decoration:line-through;font-size:11px}.add{float:right;background:#fff;color:#000;border:0;border-radius:50%;width:38px;height:38px;font-size:20px}.feature{border-radius:25px;padding:65px;background:linear-gradient(90deg,#000b,#0003),url('https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=1600&q=80') center/cover}.feature h2{font-size:65px;line-height:.9;margin:15px 0}.feature p{max-width:450px;color:#aaa;line-height:1.6;margin-bottom:20px}.benefits{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid #222}.benefits div{padding:30px;border-right:1px solid #222}.benefits p{color:#777;margin-top:8px;font-size:13px}footer{padding:40px 6%;border-top:1px solid #222;color:#777}.drawer,.modal{position:fixed;z-index:20;background:#111;border:1px solid #333}.drawer{right:-430px;top:0;width:min(420px,100%);height:100vh;padding:22px;transition:.4s}.drawer.open{right:0}.drawerHead{display:flex;justify-content:space-between;border-bottom:1px solid #333;padding-bottom:18px}.close{background:none;border:0;color:#fff;font-size:25px}.cartitems{height:70%;overflow:auto}.item{display:flex;gap:10px;padding:15px 0;border-bottom:1px solid #222}.item img{width:70px;height:65px;object-fit:contain;background:#181818}.item b{display:block}.qty button{background:#222;color:#fff;border:1px solid #444;padding:4px 9px}.total{font-size:22px;font-weight:bold;margin:15px 0}.modal{inset:0;background:#000c;display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.box{background:#111;border:1px solid #333;border-radius:22px;padding:28px;width:min(650px,100%);max-height:90vh;overflow:auto}.box h2{font-size:35px;margin-bottom:20px}.form{display:grid;gap:12px}.form input,.form textarea,.form select{padding:13px;background:#181818;border:1px solid #333;color:#fff;border-radius:10px}.pay{display:flex;gap:8px}.pay label{border:1px solid #333;padding:12px;border-radius:10px;flex:1;text-align:center;color:#aaa}.success{text-align:center}.success div{font-size:60px;color:#b7ff35}.success p{color:#888;line-height:1.6}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,80px);background:#b7ff35;color:#000;padding:12px 22px;border-radius:30px;font-weight:bold;transition:.3s;z-index:30}.toast.show{transform:translate(-50%,0)}@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.hero{flex-direction:column;text-align:center}.hero img{width:80%;margin-top:40px}.links{display:none}.benefits{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.grid{grid-template-columns:1fr}.hero h1{font-size:58px}.head{display:block}.head p{margin-top:12px}.benefits{grid-template-columns:1fr}.benefits div{border-right:0;border-bottom:1px solid #222}.feature h2{font-size:48px}}
-</style>
-</head>
-<body>
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>ShoeHub</title><style>
+*{box-sizing:border-box}body{margin:0;background:#080808;color:white;font:14px Arial}button,input,select{font:inherit}button{cursor:pointer}header{height:65px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;background:#0d0d0dee;position:sticky;top:0;z-index:9;border-bottom:1px solid #222}.logo{font-size:25px;font-weight:900}.logo span{color:#777}nav a{color:#aaa;text-decoration:none;margin:0 12px}.cartbtn{border:1px solid #444;background:#181818;color:white;border-radius:50%;width:42px;height:42px;position:relative}.count{position:absolute;background:white;color:#000;border-radius:50%;font-size:10px;padding:3px 6px;top:-5px;right:-4px}
+.hero{min-height:600px;padding:80px 7%;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 80%,#333,#080808 55%)}.hero h1{font-size:clamp(55px,10vw,100px);line-height:.8;margin:15px 0;letter-spacing:-7px}.hero h1 span{color:#666}.hero p{color:#999;max-width:430px;line-height:1.7}.go{display:inline-block;background:white;color:#000;padding:15px 23px;border-radius:30px;font-weight:bold;text-decoration:none;margin-top:12px}.hero img{position:absolute;width:50%;max-width:600px;right:2%;filter:drop-shadow(0 35px 30px #000);animation:f 4s infinite ease-in-out}@keyframes f{50%{transform:translateY(-18px) rotate(-3deg)}}
+section{padding:60px 5%}.top{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px}.top h2{font-size:38px;margin:5px 0}.sub{color:#777}.search{background:#111;color:white;border:1px solid #333;padding:12px 18px;border-radius:25px;width:220px}.filters{display:flex;gap:8px;overflow:auto;margin-bottom:25px}.filters button{background:#111;color:#aaa;border:1px solid #333;padding:10px 16px;border-radius:20px;white-space:nowrap}.filters .on,.filters button:hover{background:white;color:black}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}.card{background:#111;border:1px solid #222;border-radius:18px;overflow:hidden;transition:.35s}.card:hover{transform:translateY(-8px);border-color:#555}.pic{height:220px;background:#eee;position:relative;overflow:hidden}.pic img{width:100%;height:100%;object-fit:cover;transition:.5s}.card:hover img{transform:scale(1.08)}.heart{position:absolute;right:10px;top:10px;border:0;border-radius:50%;width:36px;height:36px}.info{padding:15px}.brand{font-size:10px;color:#777;letter-spacing:2px}.info h3{margin:7px 0}.price{font-weight:bold;font-size:17px}.old{text-decoration:line-through;color:#666;font-size:11px;margin-left:5px}.add{margin-top:12px;width:100%;padding:12px;border:0;border-radius:9px;background:white;color:#000;font-weight:bold}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin:10px 4px 0 0;border:1px solid #555}
+.features{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #222;border-bottom:1px solid #222}.feature{text-align:center;padding:25px 10px;border-right:1px solid #222}.feature b{display:block}.feature small{color:#666}
+footer{padding:45px 5%;border-top:1px solid #222;color:#777}footer strong{color:white}.credit{text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid #222}
+.mask{position:fixed;inset:0;background:#000b;z-index:20;opacity:0;visibility:hidden;transition:.3s}.mask.show{opacity:1;visibility:visible}.drawer{position:fixed;right:-430px;top:0;width:min(420px,94%);height:100%;background:#101010;z-index:30;transition:.4s;display:flex;flex-direction:column;border-left:1px solid #333}.drawer.open{right:0}.dhead{padding:22px;border-bottom:1px solid #333;display:flex;justify-content:space-between}.dhead button{background:none;border:0;color:white;font-size:25px}.items{flex:1;overflow:auto;padding:15px}.item{display:grid;grid-template-columns:65px 1fr auto;gap:10px;padding:13px 0;border-bottom:1px solid #222}.item img{width:65px;height:60px;object-fit:cover;border-radius:8px}.qty button{background:#222;color:white;border:1px solid #444;width:25px}.remove{background:none;border:0;color:#777;font-size:11px}.bottom{padding:20px;border-top:1px solid #333}.checkout{width:100%;padding:14px;border:0;border-radius:10px;font-weight:bold}.fly{position:fixed;z-index:100;width:70px;height:70px;object-fit:cover;border-radius:10px;transition:1s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.modal{position:fixed;inset:0;background:#000b;z-index:50;display:grid;place-items:center;padding:15px;opacity:0;visibility:hidden;transition:.3s}.modal.show{opacity:1;visibility:visible}.box{background:#111;border:1px solid #444;border-radius:20px;padding:25px;width:min(500px,100%);max-height:92vh;overflow:auto}.box h2{margin-top:0}.box input,.box select{width:100%;padding:13px;margin:6px 0;background:#191919;color:white;border:1px solid #333;border-radius:8px}.pay{display:flex;gap:7px;margin:8px 0}.pay label{flex:1;border:1px solid #333;padding:11px;text-align:center;border-radius:8px}.pay input{display:none}.pay label:has(input:checked){background:white;color:black}.place{width:100%;padding:14px;border:0;border-radius:10px;background:white;font-weight:bold;margin-top:10px}.close{float:right;background:none;border:0;color:white;font-size:25px}.success{text-align:center}.check{font-size:55px;border:2px solid white;border-radius:50%;width:80px;height:80px;margin:10px auto 20px;display:grid;place-items:center}.toast{position:fixed;z-index:100;bottom:25px;left:50%;transform:translate(-50%,100px);background:white;color:black;padding:13px 20px;border-radius:30px;font-weight:bold;transition:.3s}.toast.show{transform:translate(-50%,0)}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.hero img{opacity:.4;width:80%}}@media(max-width:600px){nav{display:none}.hero{min-height:600px;padding:70px 6%}.hero img{top:290px;right:-10%;width:100%;opacity:.35}.top{display:block}.search{width:100%;margin-top:15px}.grid{grid-template-columns:1fr}.features{grid-template-columns:repeat(2,1fr)}.feature{border-bottom:1px solid #222}}
+</style></head><body>
 
-<nav>
-<div class="logo">SHOE<b>HUB</b>.</div>
-<div class="links"><a href="#home">Home</a><a href="#shop">Shop</a><a href="#featured">Featured</a></div>
-<button class="navbtn" onclick="openCart()">🛒 Cart <span id="count">0</span></button>
-</nav>
+<header><div class="logo">SHOE<span>HUB</span></div><nav><a href="#home">Home</a><a href="#shop">Shop</a><a href="#about">About</a></nav><button class="cartbtn" onclick="openCart()">🛒<b class="count" id="num">0</b></button></header>
 
-<section class="hero" id="home">
-<div class="heroText">
-<div class="small">THE NEXT STEP</div>
-<h1>MOVE.<br>YOUR<br>WAY.</h1>
-<p>Premium footwear for everyday movement. Discover fresh sneakers, running shoes and street styles made to stand out.</p>
-<button class="btn" onclick="document.getElementById('shop').scrollIntoView()">SHOP NOW →</button>
-<button class="btn dark" onclick="document.getElementById('featured').scrollIntoView()">EXPLORE</button>
-</div>
-<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=85">
-</section>
+<div class="hero" id="home"><div><small style="letter-spacing:4px;color:#888">SHOEHUB / NEW DROP</small><h1>STEP<br><span>INTO</span><br>STYLE.</h1><p>Premium sneakers, streetwear and everyday shoes. Find the pair that matches your energy.</p><a class="go" href="#shop">EXPLORE COLLECTION →</a></div><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=90"></div>
 
-<section id="shop">
-<div class="head"><div><div class="small">THE COLLECTION</div><h2>Find your pair.</h2></div><p>Choose from our latest collection of stylish shoes.</p></div>
-<input class="search" id="search" placeholder="🔍 Search shoes..." oninput="render()">
-<div class="cats">
-<button class="cat on" onclick="setCat('All',this)">All</button>
-<button class="cat" onclick="setCat('Sneakers',this)">Sneakers</button>
-<button class="cat" onclick="setCat('Running',this)">Running</button>
-<button class="cat" onclick="setCat('Sports',this)">Sports</button>
-<button class="cat" onclick="setCat('Casual',this)">Casual</button>
-</div>
-<div class="grid" id="grid"></div>
-</section>
+<div class="features"><div class="feature"><b>FREE SHIPPING</b><small>Orders above ₹999</small></div><div class="feature"><b>SECURE</b><small>Easy checkout</small></div><div class="feature"><b>7 DAYS</b><small>Easy returns</small></div><div class="feature"><b>FRESH STYLE</b><small>New arrivals</small></div></div>
 
-<section id="featured">
-<div class="feature">
-<div class="small">LIMITED DROP</div>
-<h2>BUILT TO<br>BE SEEN.</h2>
-<p>Bold street sneakers with premium comfort and a futuristic look.</p>
-<button class="btn" onclick="add(2)">ADD LIMITED DROP →</button>
-</div>
-</section>
+<section id="shop"><div class="top"><div><small style="color:#777;letter-spacing:3px">THE COLLECTION</small><h2>Find Your Pair.</h2><div class="sub">Different shoes. Different moods.</div></div><input class="search" id="search" placeholder="Search shoes..." oninput="render()"></div><div class="filters"><button class="on" onclick="cat('All',this)">All</button><button onclick="cat('Sneakers',this)">Sneakers</button><button onclick="cat('Running',this)">Running</button><button onclick="cat('Street',this)">Street</button><button onclick="cat('Casual',this)">Casual</button></div><div class="grid" id="products"></div></section>
 
-<section>
-<div class="benefits">
-<div>⚡<br><b>Fast Delivery</b><p>Quick delivery across India.</p></div>
-<div>↻<br><b>Easy Returns</b><p>7-day simple returns.</p></div>
-<div>✓<br><b>Quality First</b><p>Selected footwear collection.</p></div>
-<div>♡<br><b>Made For You</b><p>Sport, street and everyday styles.</p></div>
-</div>
-</section>
+<section id="about"><small style="color:#777;letter-spacing:3px">ABOUT SHOEHUB</small><h2>More Than A Shoe.</h2><p class="sub">A modern online shoe shopping experience created using HTML, CSS and JavaScript.</p></section>
 
-<footer>
-<div class="logo">SHOE<b>HUB</b>.</div>
-<p style="margin-top:10px">A modern footwear shopping website created as a college field project.</p>
-<p style="margin-top:20px">© 2026 ShoeHub. All rights reserved.</p>
-</footer>
+<footer><div class="logo">SHOE<span>HUB</span></div><p>Walk different. Find your next favourite pair.</p><div class="credit">Designed &amp; Developed by <strong>Shrushti Pawar</strong></div></footer>
 
-<div class="drawer" id="drawer">
-<div class="drawerHead"><h2>Your Cart</h2><button class="close" onclick="closeCart()">×</button></div>
-<div class="cartitems" id="cart"></div>
-<div class="total">Total: <span id="total">₹0</span></div>
-<button class="btn" style="width:100%" onclick="checkout()">PROCEED TO CHECKOUT →</button>
-</div>
+<div class="mask" id="mask" onclick="closeCart()"></div><aside class="drawer" id="drawer"><div class="dhead"><b>Your Cart</b><button onclick="closeCart()">×</button></div><div class="items" id="items"></div><div class="bottom"><div style="display:flex;justify-content:space-between;margin-bottom:15px"><b>Total</b><b id="total">₹0</b></div><button class="checkout" id="check" onclick="checkout()">PROCEED TO CHECKOUT</button></div></aside>
 
-<div class="modal" id="modal">
-<div class="box" id="modalbox"></div>
-</div>
+<div class="modal" id="form"><div class="box"><button class="close" onclick="closeForm()">×</button><h2>Checkout</h2><input id="nm" placeholder="Full name *"><input id="ph" placeholder="Mobile number *" maxlength="10" inputmode="numeric"><input id="em" placeholder="Email"><input id="ad" placeholder="Delivery address *"><input id="city" placeholder="City *"><select id="state"><option value="">Select state *</option><option>Maharashtra</option><option>Gujarat</option><option>Delhi</option><option>Karnataka</option><option>Goa</option><option>Other</option></select><div class="pay"><label><input type="radio" name="pay" value="UPI" checked>UPI</label><label><input type="radio" name="pay" value="Card">Card</label><label><input type="radio" name="pay" value="COD">COD</label></div><input id="upi" placeholder="UPI ID (demo only)"><p style="font-size:10px;color:#666">Demo website — no real payment is processed.</p><button class="place" onclick="order()">PLACE ORDER →</button></div></div>
 
-<div class="toast" id="toast"></div>
+<div class="modal" id="done"><div class="box success"><div class="check">✓</div><h2>ORDER PLACED!</h2><p>Your ShoeHub order was created successfully.</p><p id="oid" style="color:#777"></p><button class="place" onclick="finish()">CONTINUE SHOPPING</button></div></div><div class="toast" id="toast"></div>
 
 <script>
 const P=[
-[1,"Air Nova X","Sneakers",5999,"NEW","1542291026-7eec264c27ff"],
-[2,"Street Phantom","Sneakers",6499,"LIMITED","1600185365483-26d7a4cc7519"],
-[3,"Velocity Pro","Running",5499,"RUN","1551107696-a4b0c5a0d9a2"],
-[4,"Urban Pulse","Casual",4299,"HOT","1495555961986-6d4c1ecb7be3"],
-[5,"Aero Shift","Sports",6999,"PRO","1460353581641-37baddab0fa2"],
-[6,"Cloud Runner","Running",4799,"SALE","1556048219-bb6978360b84"],
-[7,"Mono Edge","Casual",3899,"NEW","1525966222134-fcfa99b8ae77"],
-[8,"Velocity Max","Sports",7299,"MAX","1515955656352-a1fa3ffcd111"],
-[9,"Retro Wave","Sneakers",4599,"RETRO","1494496195158-c3becb4f2475"],
-[10,"Flex Runner","Running",5199,"FLEX","1549298916-b41d501d3772"],
-[11,"Shadow Street","Casual",4499,"TRENDING","1543508282-6319a3e2621f"],
-[12,"Gravity One","Sports",6799,"DROP","1552346154-21d32810aba3"]
-];
-const img=x=>`https://images.unsplash.com/photo-${x}?auto=format&fit=crop&w=800&q=80`;
-let cart=JSON.parse(localStorage.getItem("shcart")||"[]"),cat="All";
-
-function money(x){return"₹"+x.toLocaleString("en-IN")}
-function render(){
- let q=document.getElementById("search").value.toLowerCase();
- let a=P.filter(p=>(cat=="All"||p[2]==cat)&&p[1].toLowerCase().includes(q));
- document.getElementById("grid").innerHTML=a.map(p=>`
- <div class="card"><div class="pic"><span class="badge">${p[4]}</span><button class="heart" onclick="wish(this)">♡</button><img src="${img(p[5])}"></div>
- <div class="info"><small>${p[2]}</small><h3>${p[1]}</h3><div class="stars">★★★★★</div><div class="price">${money(p[3])} <span class="old">${money(p[3]+2000)}</span><button class="add" onclick="add(${p[0]})">+</button></div></div></div>`).join("");
-}
-function setCat(x,b){cat=x;document.querySelectorAll(".cat").forEach(y=>y.classList.remove("on"));b.classList.add("on");render()}
-function wish(b){b.classList.toggle("on");b.textContent=b.classList.contains("on")?"♥":"♡";toast(b.classList.contains("on")?"Added to wishlist ♥":"Removed from wishlist")}
-function add(id){
- let x=cart.find(a=>a.id==id);x?x.q++:cart.push({id,q:1});save();showCart();toast("Added to cart 🛒")
-}
-function save(){localStorage.setItem("shcart",JSON.stringify(cart));update()}
-function update(){document.getElementById("count").textContent=cart.reduce((a,b)=>a+b.q,0)}
-function openCart(){showCart();document.getElementById("drawer").classList.add("open")}
-function closeCart(){document.getElementById("drawer").classList.remove("open")}
-function showCart(){
- let total=0;
- document.getElementById("cart").innerHTML=cart.length?cart.map(x=>{let p=P.find(y=>y[0]==x.id);total+=p[3]*x.q;return`<div class="item"><img src="${img(p[5])}"><div><b>${p[1]}</b><p style="color:#b7ff35">${money(p[3])}</p><div class="qty"><button onclick="qty(${p[0]},-1)">−</button> ${x.q} <button onclick="qty(${p[0]},1)">+</button> <button onclick="qty(${p[0]},-${x.q})">🗑</button></div></div></div>`}).join(""):`<p style="color:#777;text-align:center;margin-top:50px">Your cart is empty 👟</p>`;
- document.getElementById("total").textContent=money(total);update()
-}
-function qty(id,n){let x=cart.find(a=>a.id==id);x.q+=n;if(x.q<=0)cart=cart.filter(a=>a.id!=id);save();showCart()}
-function checkout(){
- if(!cart.length){toast("Your cart is empty");return}
- closeCart();
- let total=cart.reduce((s,x)=>s+P.find(p=>p[0]==x.id)[3]*x.q,0);
- document.getElementById("modalbox").innerHTML=`
- <button class="close" style="float:right" onclick="closeModal()">×</button>
- <div class="small">SECURE CHECKOUT</div><h2>Complete your order</h2>
- <div class="form"><input id="name" placeholder="Full Name"><input id="phone" placeholder="Mobile Number">
- <textarea id="address" placeholder="Delivery Address"></textarea><input id="city" placeholder="City / Pincode">
- <b>Payment Method</b><div class="pay"><label><input type="radio" name="pay" checked> UPI</label><label><input type="radio" name="pay"> Card</label><label><input type="radio" name="pay"> COD</label></div>
- <div style="background:#181818;padding:15px;border-radius:10px">Order Total: <b style="color:#b7ff35">${money(total)}</b></div>
- <button class="btn" onclick="place()">PLACE ORDER →</button></div>`;
- document.getElementById("modal").classList.add("open")
-}
-function place(){
- if(!name.value||!phone.value||!address.value||!city.value){toast("Please fill all details");return}
- let id="SH"+Math.floor(100000+Math.random()*899999);
- document.getElementById("modalbox").innerHTML=`<div class="success"><div>✓</div><h2>Order Placed!</h2><p>Thank you, <b>${name.value}</b> 🎉</p><p>Your order <b>${id}</b> has been successfully placed.</p><p style="margin-top:15px">Payment: Selected method<br>Delivery: ${city.value}</p><div style="background:#181818;padding:15px;border-radius:12px;margin-top:20px;text-align:left">🟢 Confirmed<br>⚪ Packed<br>⚪ Shipped<br>⚪ Delivered</div><br><button class="btn" onclick="closeModal()">CONTINUE SHOPPING</button></div>`;
- cart=[];save();showCart()
-}
-function closeModal(){document.getElementById("modal").classList.remove("open")}
-function toast(t){let x=document.getElementById("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),1700)}
+["Air Nova X","Nike Style","Sneakers",4999,"1542291026-7eec264c27ff"],["Ultraboost Flow","Adidas Style","Running",5799,"1600185365483-26d7a4cc7519"],["RS Street Pro","Puma Style","Street",4299,"1551107696-a4b0c5a0d9a2"],["574 Urban","New Balance Style","Sneakers",3899,"1495555961986-6d4c1ecb7be3"],["Old Skool Edge","Vans Style","Street",3599,"1525966222134-fcfa99b8ae77"],["Chuck Motion","Converse Style","Casual",3299,"1556048219-bb6978360b84"],["Velocity Max","ShoeHub","Running",4499,"1460353581641-37baddab0fa2"],["Shadow Runner","ShoeHub","Running",3999,"1515955656352-a1fa3ffcd111"],["Court Classic","Premium Edit","Sneakers",3799,"1494496195158-c3becb4f2475"],["Urban Force","ShoeHub","Street",4699,"1549298916-b41d501d3772"],["Cloud Step","ShoeHub","Casual",2999,"1543508282-6319a3e2621f"],["Retro Flame","Premium Edit","Sneakers",4199,"1552346154-21d32810aba3"]];
+let C=JSON.parse(localStorage.shoehub||"[]"),F="All";
+const img=id=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=800&q=90`;
+const money=n=>"₹"+n.toLocaleString("en-IN");
+function render(){let q=document.getElementById("search").value.toLowerCase(),x=P.filter(p=>(F=="All"||p[2]==F)&&p[0].toLowerCase().includes(q));document.getElementById("products").innerHTML=x.map((p,i)=>`<div class="card"><div class="pic"><img src="${img(p[4])}"><button class="heart" onclick="like(this)">♡</button></div><div class="info"><small class="brand">${p[1]}</small><h3>${p[0]}</h3><b class="price">${money(p[3])}</b><span class="old">${money(p[3]+1000)}</span><div><i class="dot" style="background:#111"></i><i class="dot" style="background:#fff"></i><i class="dot" style="background:#777"></i></div><button class="add" onclick="add(${P.indexOf(p)},this)">ADD TO CART</button></div></div>`).join("")}
+function cat(x,b){F=x;document.querySelectorAll(".filters button").forEach(a=>a.classList.remove("on"));b.classList.add("on");render()}
+function like(b){b.textContent=b.textContent=="♡"?"♥":"♡";b.style.background=b.textContent=="♥"?"#111":"white";b.style.color=b.textContent=="♥"?"white":"black"}
+function add(i,b){let x=C.find(a=>a.i==i);x?x.q++:C.push({i:i,q:1});save();fly(b.closest(".card").querySelector("img"));toast(P[i][0]+" added to cart")}
+function save(){localStorage.shoehub=JSON.stringify(C);update()}
+function update(){document.getElementById("num").textContent=C.reduce((a,x)=>a+x.q,0);let total=0;document.getElementById("items").innerHTML=C.length?C.map(x=>{let p=P[x.i];total+=p[3]*x.q;return`<div class="item"><img src="${img(p[4])}"><div><b>${p[0]}</b><br><small>${money(p[3])}</small><div class="qty"><button onclick="qty(${x.i},-1)">−</button> ${x.q} <button onclick="qty(${x.i},1)">+</button></div><button class="remove" onclick="del(${x.i})">Remove</button></div><b>${money(p[3]*x.q)}</b></div>`}).join(""):'<div style="text-align:center;color:#777;padding:70px 10px">Your cart is waiting for something fresh 👟</div>';document.getElementById("total").textContent=money(total);document.getElementById("check").disabled=!C.length}
+function qty(i,n){let x=C.find(a=>a.i==i);if(x){x.q+=n;if(x.q<1)del(i);else save()}}
+function del(i){C=C.filter(x=>x.i!=i);save();toast("Removed from cart")}
+function openCart(){update();drawer.classList.add("open");mask.classList.add("show")}
+function closeCart(){drawer.classList.remove("open");mask.classList.remove("show")}
+function fly(im){let a=im.getBoundingClientRect(),b=document.querySelector(".cartbtn").getBoundingClientRect(),f=im.cloneNode();f.className="fly";f.style.left=a.left+"px";f.style.top=a.top+"px";f.style.width=a.width+"px";f.style.height=a.height+"px";document.body.append(f);setTimeout(()=>{f.style.left=b.left+"px";f.style.top=b.top+"px";f.style.width="35px";f.style.height="35px";f.style.opacity=".3";f.style.transform="scale(.3) rotate(20deg)"},20);setTimeout(()=>f.remove(),1100)}
+function checkout(){if(C.length){closeCart();form.classList.add("show")}}
+function closeForm(){form.classList.remove("show")}
+function order(){let n=document.getElementById("nm").value.trim(),p=document.getElementById("ph").value.trim(),a=document.getElementById("ad").value.trim(),c=document.getElementById("city").value.trim(),s=document.getElementById("state").value;if(!n||!/^[0-9]{10}$/.test(p)||!a||!c||!s)return toast("Please enter valid required details");let id="SH"+Date.now().toString().slice(-8);localStorage.lastOrder=id;C=[];save();closeForm();document.getElementById("oid").textContent="Order ID: "+id;done.classList.add("show")}
+function finish(){done.classList.remove("show");location.hash="shop";toast("Welcome back to ShoeHub 👟")}
+function toast(x){let t=document.getElementById("toast");t.textContent=x;t.classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove("show"),2200)}
 render();update();
-</script>
-</body>
-  </html>
+</script></body></html>
