@@ -4,32 +4,46 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ShoeHub</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font:14px Arial;background:#f5f5f5}header{height:60px;background:white;display:flex;align-items:center;gap:10px;padding:8px 5%;position:sticky;top:0;z-index:5}.logo{font-size:21px;font-weight:bold;color:#d71920}.search{flex:1;padding:9px;border:1px solid #ddd;border-radius:20px}header button{border:0;background:white;font-size:20px}.hero{height:230px;padding:45px 7%;color:white;background:linear-gradient(90deg,#550006,#ed001c)}.hero h1{font-size:32px;margin:5px 0}.hero p{font-size:12px}.hero button,.banner button{padding:10px 16px;border:0;border-radius:20px;font-weight:bold}section{padding:20px 5%}h2{font-size:20px}.cats{display:flex;gap:8px;overflow:auto}.cat{min-width:80px;border:0;background:white;border-radius:10px;padding:5px;font-weight:bold}.cat img{width:70px;height:55px;object-fit:cover;border-radius:8px}.cat small{font-size:10px}.products{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.card{background:white;border-radius:12px;overflow:hidden;position:relative}.card img{width:100%;height:150px;object-fit:cover}.info{padding:9px}.info h3{margin:5px 0}.price{color:#d71920;font-weight:bold}.heart{position:absolute;right:6px;top:6px;border:0;border-radius:50%;background:white;font-size:18px}.add{width:100%;background:#111;color:white;border:0;padding:8px;border-radius:8px}.banner{margin:15px 5%;padding:25px;background:#111;color:white;text-align:center;border-radius:15px}footer{background:#111;color:white;padding:25px 5%}@media(min-width:700px){.products{grid-template-columns:repeat(4,1fr)}}
+*{box-sizing:border-box}body{margin:0;font:14px Arial;background:#f5f5f5;color:#222}
+header{height:62px;background:#fff;display:flex;align-items:center;gap:12px;padding:8px 5%;position:sticky;top:0;z-index:9;box-shadow:0 1px 5px #ddd}
+.logo{font-size:23px;font-weight:bold;color:#d71920}.search{flex:1;padding:10px 15px;border:1px solid #ddd;border-radius:22px}
+header button{border:0;background:white;font-size:20px;position:relative}.num{font-size:10px;background:#d71920;color:white;border-radius:10px;padding:2px 5px;position:absolute;top:-5px}
+.hero{background:linear-gradient(90deg,#580007,#ed001d);color:white;padding:45px 7%;height:245px}.hero h1{font-size:35px;margin:5px 0}.hero button{padding:11px 18px;border:0;border-radius:20px;font-weight:bold}
+section{padding:22px 5%}h2{margin:5px 0 16px}
+.cats{display:flex;gap:9px;overflow:auto}.cat{min-width:85px;border:0;background:white;border-radius:10px;padding:5px;font-weight:bold}.cat img{width:75px;height:58px;object-fit:cover;border-radius:8px}.cat small{font-size:10px}
+.products{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.card{background:white;border-radius:12px;overflow:hidden;position:relative}.card>img{width:100%;height:160px;object-fit:cover}.info{padding:10px}.info h3{margin:5px 0}.price{color:#d71920;font-weight:bold}.heart{position:absolute;right:7px;top:7px;border:0;background:white;border-radius:50%;font-size:19px}.add{width:100%;background:#111;color:white;border:0;padding:9px;border-radius:7px}
+.banner{margin:15px 5%;padding:25px;background:#111;color:white;text-align:center;border-radius:15px}
+footer{background:#111;color:white;padding:25px 5%}
+.modal{position:fixed;inset:0;background:#0008;z-index:20;display:flex;justify-content:center;align-items:center;padding:15px}.box{background:white;border-radius:15px;width:100%;max-width:600px;max-height:90vh;overflow:auto;padding:20px}.close{float:right;border:0;background:#eee;border-radius:50%;padding:6px 10px}
+.item{display:flex;gap:12px;border-bottom:1px solid #ddd;padding:12px 0}.item img{width:90px;height:80px;object-fit:cover;border-radius:9px}.item h3{margin:4px 0}.qty button{padding:4px 9px;border:1px solid #ddd;background:white}.remove{color:#d71920;border:0;background:none}
+.total{display:flex;justify-content:space-between;font-size:18px;font-weight:bold;padding:18px 0}.order{width:100%;padding:13px;background:#d71920;color:white;border:0;border-radius:8px;font-weight:bold}
+@media(min-width:700px){.products{grid-template-columns:repeat(4,1fr)}}
 </style>
 </head>
+
 <body>
 
 <header>
 <div class="logo">ShoeHub</div>
-<input class="search" id="q" placeholder="Search shoes..." oninput="show()">
-<button onclick="alert('Wishlist ❤️')">♡</button>
-<button onclick="cart()">🛒<sup id="n">0</sup></button>
+<input class="search" id="search" placeholder="Search shoes..." oninput="show()">
+<button onclick="wishlist()">♡<sup class="num" id="wn">0</sup></button>
+<button onclick="cart()">🛒<sup class="num" id="cn">0</sup></button>
 </header>
 
 <div class="hero">
 <h1>Step Into Your Style</h1>
-<p>Discover footwear for every mood, move and moment.</p>
+<p>Discover shoes for every mood, move and moment.</p>
 <button onclick="filter('All')">Shop Collection</button>
 </div>
 
 <section>
 <h2>Shop By Category</h2>
 <div class="cats">
-<button class="cat" onclick="filter('Running')"><img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=200"><small>Running</small></button>
-<button class="cat" onclick="filter('Sneakers')"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200"><small>Sneakers</small></button>
-<button class="cat" onclick="filter('Sports')"><img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=200"><small>Sports</small></button>
-<button class="cat" onclick="filter('Casual')"><img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=200"><small>Casual</small></button>
-<button class="cat" onclick="filter('Formal')"><img src="https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=200"><small>Formal</small></button>
+<button class="cat" onclick="filter('Running')"><img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=300"><small>Running</small></button>
+<button class="cat" onclick="filter('Sneakers')"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300"><small>Sneakers</small></button>
+<button class="cat" onclick="filter('Sports')"><img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=300"><small>Sports</small></button>
+<button class="cat" onclick="filter('Casual')"><img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=300"><small>Casual</small></button>
+<button class="cat" onclick="filter('Formal')"><img src="https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=300"><small>Formal</small></button>
 </div>
 </section>
 
@@ -40,38 +54,106 @@
 
 <div class="banner">
 <h2>Step Into 30% OFF</h2>
-<p>Use code STEP30</p>
-<button onclick="filter('All')">Shop Now</button>
+<p>Use code STEP30 on selected shoes.</p>
 </div>
 
 <footer>
 <h2>ShoeHub 👟</h2>
 <p>Premium footwear for every step.</p>
-<p>SY Computer Science Field Project • 2026</p>
+<p>SY Computer Science Project • 2026</p>
 </footer>
 
+<div id="pop"></div>
+
 <script>
-let d=[
-["Air Max","Sneakers",4299,"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"],
-["Runner Pro","Running",5999,"https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=500"],
-["Street Sport","Sports",4799,"https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500"],
-["Urban Classic","Casual",2999,"https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500"],
-["Classic Derby","Formal",5299,"https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=500"],
-["Street White","Sneakers",3899,"https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?w=500"],
-["Speed Runner","Running",4499,"https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=500"],
-["Court Max","Sports",5199,"https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500"]
-],cat="All",bag=[];
+let shoes=[
+["Air Max","Sneakers",4299,"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"],
+["Runner Pro","Running",5999,"https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=600"],
+["Street Sport","Sports",4799,"https://images.unsplash.com/photo-1552346154-21d32810aba3?w=600"],
+["Urban Classic","Casual",2999,"https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=600"],
+["Classic Derby","Formal",5299,"https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=600"],
+["Street White","Sneakers",3899,"https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?w=600"],
+["Speed Runner","Running",4499,"https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=600"],
+["Court Max","Sports",5199,"https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600"],
+["Daily Walk","Casual",2799,"https://images.unsplash.com/photo-1520256862855-398228c41684?w=600"],
+["Brown Leather","Formal",5699,"https://images.unsplash.com/photo-1449247709967-d4461a6a6103?w=600"]
+];
+
+let cat="All",bag=[],wish=[];
 
 function filter(x){cat=x;show()}
+
 function show(){
-let q=document.getElementById("q").value.toLowerCase();
-let a=d.filter(x=>(cat=="All"||x[1]==cat)&&x[0].toLowerCase().includes(q));
-document.getElementById("title").innerText=cat=="All"?"All Shoes":cat+" Shoes";
-document.getElementById("products").innerHTML=a.map(x=>`<div class="card"><button class="heart">♡</button><img src="${x[3]}"><div class="info"><small>${x[1]}</small><h3>${x[0]}</h3>⭐ 4.8<p class="price">₹${x[2]}</p><button class="add" onclick="add('${x[0]}')">Add to Cart</button></div></div>`).join("")
+let q=search.value.toLowerCase();
+let a=shoes.filter(x=>(cat=="All"||x[1]==cat)&&x[0].toLowerCase().includes(q));
+title.innerText=cat=="All"?"All Shoes":cat+" Shoes";
+products.innerHTML=a.map((x,i)=>`
+<div class="card">
+<button class="heart" onclick="fav(${shoes.indexOf(x)})">${wish.includes(shoes.indexOf(x))?"♥":"♡"}</button>
+<img src="${x[3]}">
+<div class="info"><small>${x[1]}</small><h3>${x[0]}</h3>⭐ 4.8
+<p class="price">₹${x[2].toLocaleString()}</p>
+<button class="add" onclick="add(${shoes.indexOf(x)})">Add to Cart</button>
+</div></div>`).join("");
+count()
 }
-function add(x){bag.push(x);n.innerText=bag.length;alert(x+" added 🛒")}
-function cart(){alert(bag.length?bag.join(", ")+"\n\nOrder placed successfully! 🎉":"Cart is empty")}
+
+function add(i){
+let x=bag.find(a=>a.id==i);
+x?x.qty++:bag.push({id:i,qty:1});
+count();alert("Added to cart 🛒")
+}
+
+function fav(i){
+wish.includes(i)?wish=wish.filter(x=>x!=i):wish.push(i);
+count();show()
+}
+
+function count(){
+cn.innerText=bag.reduce((a,x)=>a+x.qty,0);
+wn.innerText=wish.length
+}
+
+function cart(){
+let total=bag.reduce((a,x)=>a+shoes[x.id][2]*x.qty,0);
+pop.innerHTML=`<div class="modal"><div class="box">
+<button class="close" onclick="closePop()">×</button>
+<h2>🛒 My Cart</h2>
+${bag.length?bag.map(x=>{
+let s=shoes[x.id];
+return `<div class="item"><img src="${s[3]}"><div><h3>${s[0]}</h3><small>${s[1]}</small><p>₹${s[2].toLocaleString()}</p>
+<div class="qty"><button onclick="change(${x.id},-1)">−</button> ${x.qty} <button onclick="change(${x.id},1)">+</button>
+<button class="remove" onclick="del(${x.id})">Remove</button></div></div></div>`
+}).join(""):`<p>Your cart is empty 🛒</p>`}
+${bag.length?`<div class="total"><span>Total</span><span>₹${total.toLocaleString()}</span></div><button class="order" onclick="place()">PLACE ORDER</button>`:""}
+</div></div>`
+}
+
+function change(id,n){
+let x=bag.find(a=>a.id==id);x.qty+=n;
+if(x.qty<1)del(id);else{count();cart()}
+}
+
+function del(id){
+bag=bag.filter(x=>x.id!=id);count();cart()
+}
+
+function wishlist(){
+pop.innerHTML=`<div class="modal"><div class="box">
+<button class="close" onclick="closePop()">×</button>
+<h2>♡ My Wishlist</h2>
+${wish.length?wish.map(i=>{let s=shoes[i];return `<div class="item"><img src="${s[3]}"><div><h3>${s[0]}</h3><p>₹${s[2].toLocaleString()}</p><button class="add" onclick="add(${i})">Add to Cart</button></div></div>`}).join(""):`<p>Your wishlist is empty ♡</p>`}
+</div></div>`
+}
+
+function place(){
+alert("🎉 Order Placed Successfully!");
+bag=[];count();closePop()
+}
+
+function closePop(){pop.innerHTML=""}
+
 show();
 </script>
 </body>
-</html>
+                                                                                                                                                    </html>
