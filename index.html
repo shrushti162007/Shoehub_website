@@ -1,159 +1,136 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ShoeHub</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f7f4ef;color:#171717}button,input,select{font:inherit}
-.top{background:#171717;color:#fff;text-align:center;padding:8px;font-size:12px}
-header{background:#f7f4ef;position:sticky;top:0;z-index:10;border-bottom:1px solid #ddd}
-.head{max-width:1200px;margin:auto;padding:16px 20px;display:flex;align-items:center;gap:18px}.logo{font-size:28px;font-weight:900;letter-spacing:-1px}.logo span{color:#e9673c}
-.search{flex:1;background:#fff;border:1px solid #ddd;border-radius:30px;display:flex;overflow:hidden}.search input{flex:1;border:0;outline:0;padding:13px 18px;background:transparent}.search button{border:0;background:#e9673c;color:#fff;padding:0 22px}
-.cartbtn{border:0;background:#171717;color:#fff;border-radius:25px;padding:12px 18px}
-.nav{max-width:1200px;margin:auto;padding:0 20px 12px;display:flex;gap:8px;overflow:auto}.nav button{border:0;background:transparent;padding:9px 16px;border-radius:20px;white-space:nowrap}.nav button.active,.nav button:hover{background:#e9673c;color:#fff}
-main{max-width:1200px;margin:auto;padding:25px 20px}
-.hero{min-height:330px;border-radius:28px;background:#20201e;color:#fff;padding:55px;display:flex;align-items:center;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:330px;height:330px;border-radius:50%;background:#e9673c;right:-100px;top:-80px}.hero div{position:relative;z-index:1;max-width:600px}.hero small{color:#ff9874;font-weight:bold;letter-spacing:2px}.hero h1{font-size:54px;margin:15px 0;line-height:1}.hero p{color:#bbb;line-height:1.6}.hero button{border:0;background:#e9673c;color:#fff;padding:14px 24px;border-radius:25px;font-weight:bold}
-h2{margin:38px 0 18px}.cats{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}.cat{background:#fff;border:1px solid #e5e0d9;border-radius:18px;padding:20px 5px;text-align:center;cursor:pointer;transition:.2s}.cat:hover{transform:translateY(-4px);box-shadow:0 8px 20px #0001}.cat b{display:block;color:#e9673c;font-size:24px;margin-bottom:9px}
-.trend{display:flex;gap:16px;overflow-x:auto;padding-bottom:8px;scroll-behavior:smooth}.trend::-webkit-scrollbar{height:5px}.trend>div{min-width:250px;background:#fff;border-radius:18px;padding:10px;border:1px solid #eee}.trend img{width:100%;height:165px;object-fit:cover;border-radius:13px}.trend b{display:block;padding:10px 3px 3px}
-.toolbar{display:flex;gap:10px;background:#fff;padding:14px;border-radius:15px;border:1px solid #eee}.toolbar input,.toolbar select{flex:1;border:1px solid #ddd;border-radius:10px;padding:11px;outline:0;background:#fff}
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border:1px solid #e5e0d9;border-radius:18px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-5px);box-shadow:0 12px 30px #0001}.photo{position:relative}.photo img{width:100%;height:220px;object-fit:cover;display:block}.heart{position:absolute;right:10px;top:10px;border:0;background:#fff;border-radius:50%;width:36px;height:36px;font-size:19px}.info{padding:14px}.brand{font-size:11px;color:#888;font-weight:bold}.name{font-weight:bold;margin:6px 0}.rating{font-size:13px;color:#d17b00}.price{font-weight:bold;font-size:19px;margin-top:9px}.old{text-decoration:line-through;color:#999;font-size:12px;margin-left:5px}.add{width:100%;border:0;background:#171717;color:#fff;padding:12px;border-radius:10px;margin-top:12px;font-weight:bold}.add:hover{background:#e9673c}
-.banner{margin-top:35px;background:#e9673c;color:#fff;padding:28px;border-radius:22px}.banner button{border:0;padding:11px 20px;border-radius:20px;font-weight:bold}
-footer{margin-top:50px;background:#171717;color:#fff;padding:35px 20px;text-align:center}footer p{color:#aaa}
-.overlay{display:none;position:fixed;inset:0;background:#0008;z-index:20}.overlay.show{display:block}.drawer{position:fixed;right:-430px;top:0;width:410px;max-width:94%;height:100vh;background:#fff;z-index:30;padding:22px;transition:.3s;box-shadow:-10px 0 30px #0003}.drawer.open{right:0}.close{float:right;border:0;background:#eee;border-radius:50%;width:34px;height:34px}.item{display:flex;gap:10px;margin:18px 0}.item img{width:70px;height:70px;object-fit:cover;border-radius:10px}.qty button{border:0;background:#eee;padding:5px 9px;margin:5px}.total{border-top:1px solid #ddd;padding-top:15px;display:flex;justify-content:space-between;font-size:20px;font-weight:bold}.order{width:100%;border:0;background:#e9673c;color:#fff;padding:14px;border-radius:10px;margin-top:15px;font-weight:bold}
-.modal{display:none;position:fixed;z-index:40;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;width:800px;max-width:94%;max-height:90vh;overflow:auto;border-radius:22px;padding:22px}.modal.show{display:block}.detail{display:grid;grid-template-columns:1fr 1fr;gap:22px}.detail img{width:100%;height:360px;object-fit:cover;border-radius:17px}.sizes button,.colors button{border:1px solid #ddd;background:#fff;padding:9px 13px;border-radius:8px;margin:5px}.sizes button.sel,.colors button.sel{background:#171717;color:#fff}
-@media(max-width:850px){.cats{grid-template-columns:repeat(4,1fr)}.products{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:42px}}
-@media(max-width:550px){.head{flex-wrap:wrap}.search{order:3;flex-basis:100%}.cats{grid-template-columns:repeat(3,1fr)}.products{gap:9px}.photo img{height:160px}.hero{padding:35px 25px}.hero h1{font-size:38px}.detail{grid-template-columns:1fr}.detail img{height:250px}}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;background:#f7f7f7;color:#161616}
+header{background:#fff;position:sticky;top:0;z-index:20;box-shadow:0 2px 12px #0002}.nav{max-width:1200px;margin:auto;height:68px;display:flex;align-items:center;gap:18px;padding:10px 16px}
+.logo{font-size:28px;font-weight:900;color:#e53935}.logo span{color:#111}.search{display:flex;flex:1;background:#f2f2f2;border-radius:25px;overflow:hidden;border:1px solid #ddd}.search input{flex:1;border:0;background:transparent;padding:13px 18px;outline:0}.search button{border:0;background:#e53935;color:white;padding:0 20px}.bag{border:0;background:white;font-size:22px;position:relative}.count{position:absolute;background:#e53935;color:white;border-radius:50%;font-size:10px;padding:3px 6px;top:-8px;right:-8px}
+.hero{height:430px;background:linear-gradient(90deg,#000b,#0001),url("https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1500&q=90") center/cover;display:flex;align-items:center}.heroText{max-width:1200px;width:100%;margin:auto;padding:25px;color:white}.hero h1{font-size:56px;max-width:600px}.hero p{font-size:19px;margin:15px 0 25px}.hero button{background:#e53935;color:white;border:0;padding:14px 25px;border-radius:25px;font-weight:bold}
+.wrap{max-width:1200px;margin:auto;padding:35px 16px}.title{font-size:27px;margin-bottom:20px}.cats{display:flex;gap:13px;overflow-x:auto}.cat{min-width:145px;height:145px;border-radius:15px;overflow:hidden;position:relative;cursor:pointer}.cat img{width:100%;height:100%;object-fit:cover}.cat b{position:absolute;bottom:0;left:0;right:0;padding:22px 5px 10px;text-align:center;color:white;background:linear-gradient(transparent,#000b)}
+.tools{display:flex;gap:10px;margin:20px 0}.tools input,.tools select{padding:11px;border:1px solid #ddd;border-radius:8px;background:white}.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:white;border-radius:15px;overflow:hidden;box-shadow:0 3px 15px #0001;transition:.2s}.card:hover{transform:translateY(-4px)}.pic{height:215px;background:#eee;position:relative}.pic img{width:100%;height:100%;object-fit:cover}.heart{position:absolute;right:10px;top:10px;border:0;border-radius:50%;background:white;width:35px;height:35px;font-size:19px}.info{padding:14px}.brand{font-size:12px;color:#777;font-weight:bold}.info h3{font-size:16px;margin:5px 0}.rating{color:#e9a400;font-size:13px}.price{font-size:19px;font-weight:bold;margin:8px 0}.old{text-decoration:line-through;color:#999;font-size:12px;margin-left:5px}.off{color:#159447;font-size:12px;margin-left:5px}.add{width:100%;padding:11px;border:0;border-radius:8px;background:#111;color:white;font-weight:bold;margin-top:5px}.details{background:#eee!important;color:#111!important}
+.trend{display:flex;gap:15px;overflow-x:auto;scroll-behavior:smooth}.trend .card{min-width:250px}.trend::-webkit-scrollbar,.cats::-webkit-scrollbar{height:5px}
+.overlay,.modal{display:none;position:fixed;inset:0;background:#0009;z-index:50}.drawer{background:white;width:min(420px,100%);height:100%;margin-left:auto;padding:22px;overflow:auto}.close{float:right;border:0;background:none;font-size:25px}.cartItem{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid #ddd}.cartItem img{width:75px;height:65px;object-fit:cover;border-radius:8px}.total{font-size:22px;font-weight:bold;margin:20px 0}.order{width:100%;padding:14px;background:#e53935;color:white;border:0;border-radius:9px;font-weight:bold}
+.modal{align-items:center;justify-content:center;padding:15px}.modalBox{background:white;border-radius:18px;padding:20px;max-width:700px;width:100%}.detail{display:flex;gap:20px}.detail img{width:48%;height:300px;object-fit:cover;border-radius:12px}.detailText{flex:1}.detailText h2{margin:10px 0}.sizes button,.colors button{padding:8px 13px;margin:4px;background:white;border:1px solid #bbb;border-radius:6px}.buy{width:100%;padding:13px;background:#111;color:white;border:0;border-radius:8px;margin-top:12px}
+footer{background:#111;color:#ddd;text-align:center;padding:35px;margin-top:40px}footer b{color:white}
+@media(max-width:850px){.products{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:42px}}
+@media(max-width:520px){.products{gap:10px}.pic{height:155px}.info{padding:9px}.info h3{font-size:14px}.hero{height:370px}.hero h1{font-size:35px}.detail{flex-direction:column}.detail img{width:100%;height:230px}}
 </style>
 </head>
 <body>
 
-<div class="top">FREE SHIPPING ABOVE ₹999 • WELCOME TO SHOEHUB</div>
+<header><div class="nav">
+<div class="logo">Shoe<span>Hub</span></div>
+<div class="search"><input id="search" placeholder="Search shoes, brands..."><button onclick="render()">⌕</button></div>
+<button class="bag" onclick="openCart()">🛍️<i class="count" id="count">0</i></button>
+</div></header>
 
-<header>
-<div class="head">
-<div class="logo">SHOE<span>HUB</span></div>
-<div class="search"><input id="search" placeholder="Search shoes, brands or categories" oninput="render()"><button onclick="goShop()">Search</button></div>
-<button class="cartbtn" onclick="openCart()">🛒 Bag</button>
-</div>
-<div class="nav" id="nav"></div>
-</header>
+<section class="hero"><div class="heroText">
+<h1>Step Into Your Style</h1><p>Discover footwear for every mood, move and moment.</p>
+<button onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop Collection →</button>
+</div></section>
 
-<main>
-<section class="hero">
-<div><small>YOUR STYLE. YOUR STEP.</small><h1>Find the pair that feels like you.</h1><p>Explore sneakers, running shoes, sports footwear and everyday favourites at ShoeHub.</p><button onclick="setCat('All')">Explore Shoes →</button></div>
-</section>
-
-<h2>Shop by Category</h2>
-<div class="cats" id="cats"></div>
-
-<h2>Trending Shoes <small style="font-size:13px;color:#888">Swipe →</small></h2>
-<div class="trend" id="trend"></div>
-
-<section id="shop"><h2 id="title">All Shoes</h2>
-<div class="toolbar"><input id="filter" placeholder="Search in collection..." oninput="render()"><select id="sort" onchange="render()"><option value="">Sort By</option><option value="low">Price Low → High</option><option value="high">Price High → Low</option><option value="rate">Top Rated</option></select></div>
-<div class="products" id="products"></div>
-</section>
-
-<div class="banner"><h2 style="margin:0 0 8px">Step into your next favourite pair.</h2><p>Simple shopping. Fresh styles. ShoeHub.</p><button onclick="setCat('All')">Shop Now</button></div>
-</main>
-
-<footer><h2 style="margin:0">SHOEHUB</h2><p>Everyday footwear destination.</p><p>📞 +91 76203 43907</p><p>Designed & Developed by <b>Shrushti Pawar</b></p></footer>
-
-<div class="overlay" id="overlay" onclick="closeAll()"></div>
-
-<div class="drawer" id="drawer">
-<button class="close" onclick="closeAll()">×</button><h2>Your Bag</h2><div id="items"></div>
-<div class="total"><span>Total</span><span id="total">₹0</span></div><button class="order" onclick="placeOrder()">Place Order</button>
+<div class="wrap">
+<h2 class="title">Shop By Category</h2><div class="cats" id="cats"></div>
+<section id="shop"><h2 class="title" style="margin-top:40px">All Shoes</h2>
+<div class="tools"><select id="filter" onchange="render()"><option value="">All Categories</option></select><select id="sort" onchange="render()"><option value="">Sort By</option><option value="low">Price Low → High</option><option value="high">Price High → Low</option><option value="rating">Top Rated</option></select></div>
+<div class="products" id="products"></div></section>
+<h2 class="title" style="margin-top:45px">Trending Now</h2><div class="trend" id="trend"></div>
 </div>
 
-<div class="modal" id="modal"><button class="close" onclick="closeAll()">×</button><div id="detail"></div></div>
+<div class="overlay" id="cartBox"><div class="drawer"><button class="close" onclick="closeCart()">×</button><h2>Your Shopping Bag</h2><div id="cart"></div><div class="total">Total: ₹<span id="total">0</span></div><button class="order" onclick="placeOrder()">Place Order</button></div></div>
+<div class="modal" id="modal"><div class="modalBox"><button class="close" onclick="closeModal()">×</button><div id="details"></div></div></div>
+
+<footer><b>ShoeHub</b><p>Your style. Your step. Your choice.</p><p>📞 +91 76203 43907</p><p>Designed & Developed by <b>Shrushti Pawar</b></p></footer>
 
 <script>
-const photos=[
-"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80",
+const I=[
 "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=700&q=80",
 "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=700&q=80",
 "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=700&q=80",
 "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=700&q=80",
-"https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=700&q=80"
+"https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=700&q=80",
+"https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=700&q=80",
+"https://images.unsplash.com/photo-1554138797-56c2e2d4c4d0?auto=format&fit=crop&w=700&q=80",
+"https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=700&q=80",
+"https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=700&q=80",
+"https://images.unsplash.com/photo-1556637640-2c80d3201be8?auto=format&fit=crop&w=700&q=80",
+"https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=700&q=80",
+"https://images.unsplash.com/photo-1543508282-6319a3e2621f?auto=format&fit=crop&w=700&q=80"
 ];
 
-const raw=[
-["Nike","Air Max 270","Running",5499,4.8],["Nike","Revolution Runner","Running",3499,4.6],["Adidas","Ultraboost Runner","Running",7999,4.9],["Puma","Velocity Nitro","Running",4999,4.7],["New Balance","Fresh Foam","Running",6299,4.8],["Asics","Gel Contend","Running",4299,4.6],
-["Nike","Dunk Low","Sneakers",6499,4.8],["Adidas","Forum Street","Sneakers",5999,4.7],["Puma","Suede Classic","Sneakers",4499,4.6],["New Balance","550 Classic","Sneakers",6999,4.8],["Reebok","Club C 85","Sneakers",3999,4.6],
-["Nike","Court Vision","Sports",4299,4.6],["Adidas","Runfalcon Sport","Sports",3499,4.5],["Puma","Court Rider","Sports",3999,4.6],["Reebok","Flexagon Force","Sports",3699,4.5],
-["Skechers","Go Walk Comfort","Walking",4499,4.7],["Skechers","Summits Walking","Walking",3999,4.6],["Adidas","Cloudfoam Walk","Walking",3799,4.6],["Puma","SoftRide Walk","Walking",3299,4.5],
-["Nike","Everyday Casual","Casual",3999,4.6],["Puma","Caven Street","Casual",3499,4.5],["Adidas","Grand Court","Casual",3799,4.7],["Reebok","Royal Complete","Casual",3299,4.5],
-["Nike","Air Jordan Street","Basketball",7499,4.9],["Nike","Court Mid","Basketball",5999,4.7],["Adidas","Hoops 3.0","Basketball",4999,4.6],["Puma","Rise Basketball","Basketball",5299,4.7],
-["Nike","Metcon Trainer","Training",6499,4.8],["Adidas","Dropset Trainer","Training",5799,4.7],["Puma","Fuse Training","Training",4999,4.6],["Reebok","Nano Training","Training",5999,4.8]
+const P=[
+["Nike","Air Max 270","Running",8999,11999,4.8],
+["Nike","Revolution Runner","Running",4299,5999,4.5],
+["Adidas","Ultraboost Runner","Running",9999,13999,4.9],
+["Puma","Velocity Nitro","Running",7499,9999,4.7],
+["New Balance","Fresh Foam","Running",6799,8499,4.6],
+["Asics","Gel Contend","Running",5299,6999,4.5],
+["Nike","Dunk Low","Sneakers",8499,10999,4.8],
+["Adidas","Forum Street","Sneakers",6299,7999,4.6],
+["Puma","Suede Classic","Sneakers",4999,6499,4.7],
+["New Balance","550 Classic","Sneakers",7999,9999,4.8],
+["Reebok","Club C 85","Sneakers",4599,5999,4.5],
+["Nike","Court Vision","Sports",4799,6499,4.5],
+["Adidas","Runfalcon Sport","Sports",3999,5499,4.4],
+["Puma","Court Rider","Sports",5999,7999,4.6],
+["Reebok","Flexagon Force","Sports",4299,5799,4.5],
+["Skechers","Go Walk Comfort","Walking",4499,5999,4.7],
+["Skechers","Summits","Walking",3999,5499,4.6],
+["Adidas","Cloudfoam Walk","Walking",4299,5799,4.6],
+["Puma","SoftRide Walk","Walking",3699,4999,4.4],
+["Nike","Everyday Casual","Casual",3999,5299,4.5],
+["Puma","Caven Street","Casual",4499,5999,4.6],
+["Adidas","Grand Court","Casual",4299,5799,4.7],
+["Reebok","Royal Complete","Casual",3899,5199,4.4],
+["Nike","Air Jordan Street","Basketball",8999,11999,4.9],
+["Nike","Court Mid","Basketball",6999,8999,4.7],
+["Adidas","Hoops 3.0","Basketball",5499,7499,4.6],
+["Puma","Rise Basketball","Basketball",5999,7999,4.7],
+["Nike","Metcon Trainer","Training",8499,10999,4.8],
+["Adidas","Dropset Trainer","Training",7499,9499,4.7],
+["Puma","Fuse Training","Training",6499,8499,4.6],
+["Reebok","Nano Training","Training",7999,9999,4.8]
 ];
 
-const shoes=raw.map((x,i)=>({id:i,brand:x[0],name:x[1],cat:x[2],price:x[3],rate:x[4],img:photos[i%photos.length]}));
-let cat="All",bag=[],wish=[];
+const catImg={Running:I[0],Sneakers:I[1],Sports:I[2],Walking:I[3],Casual:I[4],Basketball:I[5],Training:I[6]};
+let cart=[];
 
-["All","Running","Sneakers","Sports","Casual","Walking","Basketball","Training"].forEach(x=>{
-nav.innerHTML+=`<button id="n${x}" onclick="setCat('${x}')">${x}</button>`;
-});
-
-[["Running","RUN"],["Sneakers","ST"],["Sports","SP"],["Casual","CA"],["Walking","WK"],["Basketball","BB"],["Training","TR"]].forEach(x=>{
-cats.innerHTML+=`<div class="cat" onclick="setCat('${x[0]}')"><b>${x[1]}</b>${x[0]}</div>`;
-});
-
-trend.innerHTML=shoes.slice(0,10).map(x=>`<div><img src="${x.img}"><b>${x.brand} ${x.name}</b>₹${x.price.toLocaleString()}</div>`).join("");
-
-function setCat(x){
-cat=x;
-document.getElementById("title").textContent=x=="All"?"All Shoes":x+" Shoes";
-document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
-document.getElementById("n"+x).classList.add("active");
-filter.value="";search.value="";
-render();
-goShop();
+function setup(){
+let c=[...new Set(P.map(x=>x[2]))];
+cats.innerHTML=c.map(x=>`<div class="cat" onclick="choose('${x}')"><img src="${catImg[x]}"><b>${x}</b></div>`).join("");
+filter.innerHTML='<option value="">All Categories</option>'+c.map(x=>`<option>${x}</option>`).join("");
 }
 
-function goShop(){document.getElementById("shop").scrollIntoView({behavior:"smooth",block:"start"})}
+function choose(x){filter.value=x;render();shop.scrollIntoView({behavior:"smooth"})}
+
+function card(p){
+let off=Math.round((1-p[3]/p[4])*100);
+return `<div class="card"><div class="pic"><img src="${I[p.i%I.length]}"><button class="heart" onclick="this.innerText=this.innerText=='♡'?'♥':'♡'">♡</button></div><div class="info"><small class="brand">${p[0]} · ${p[2]}</small><h3>${p[1]}</h3><div class="rating">★ ${p[5]} · 120+ reviews</div><div class="price">₹${p[3].toLocaleString()} <span class="old">₹${p[4].toLocaleString()}</span><span class="off">${off}% OFF</span></div><button class="add" onclick="add(${p.i})">Add to Bag</button><button class="add details" onclick="details(${p.i})">View Details</button></div></div>`;
+}
 
 function render(){
-let q=(search.value+" "+filter.value).toLowerCase();
-let a=shoes.filter(x=>(cat=="All"||x.cat==cat)&&(!q||`${x.brand} ${x.name} ${x.cat}`.toLowerCase().includes(q)));
-if(sort.value=="low")a.sort((x,y)=>x.price-y.price);
-if(sort.value=="high")a.sort((x,y)=>y.price-x.price);
-if(sort.value=="rate")a.sort((x,y)=>y.rate-x.rate);
-products.innerHTML=a.map(x=>`
-<div class="card"><div class="photo"><img src="${x.img}"><button class="heart" onclick="toggleWish(${x.id})">${wish.includes(x.id)?"♥":"♡"}</button></div>
-<div class="info"><span class="brand">${x.brand}</span><div class="name">${x.name}</div><div class="rating">★ ${x.rate} • 120+ reviews</div>
-<div class="price">₹${x.price.toLocaleString()} <span class="old">₹${(x.price*1.2|0).toLocaleString()}</span></div>
-<button class="add" onclick="details(${x.id})">View Product</button></div></div>`).join("");
+let q=search.value.toLowerCase(),f=filter.value,s=sort.value;
+let a=P.map((p,i)=>({...p,i})).filter(p=>(!q||(p[0]+" "+p[1]+" "+p[2]).toLowerCase().includes(q))&&(!f||p[2]==f));
+if(s=="low")a.sort((a,b)=>a[3]-b[3]);if(s=="high")a.sort((a,b)=>b[3]-a[3]);if(s=="rating")a.sort((a,b)=>b[5]-a[5]);
+products.innerHTML=a.map(card).join("");
+trend.innerHTML=P.slice(0,12).map((p,i)=>card({...p,i})).join("");
 }
 
-function details(id){
-let x=shoes[id];
-detail.innerHTML=`<div class="detail"><img src="${x.img}"><div><span class="brand">${x.brand}</span><h2>${x.name}</h2><div class="rating">★ ${x.rate} Excellent Rating</div><div class="price">₹${x.price.toLocaleString()}</div><p>Stylish and comfortable footwear designed for everyday movement.</p>
-<div class="colors"><b>Colour</b><br><button class="sel">Black</button><button>White</button><button>Grey</button></div>
-<div class="sizes"><b>Size</b><br>${[6,7,8,9,10].map(n=>`<button onclick="this.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('sel'));this.classList.add('sel')">${n}</button>`).join("")}</div>
-<button class="add" onclick="add(${id});closeAll()">Add to Bag • ₹${x.price.toLocaleString()}</button></div></div>`;
-modal.classList.add("show");overlay.classList.add("show");
+function add(i){cart.push(i);update();alert(P[i][1]+" added to your bag!")}
+function update(){
+count.innerText=cart.length;let t=0;
+cart.innerHTML=cart.map((i,n)=>{let p=P[i];t+=p[3];return `<div class="cartItem"><img src="${I[i%I.length]}"><div><b>${p[1]}</b><p>₹${p[3]}</p><button onclick="cart.splice(${n},1);update()">Remove</button></div></div>`}).join("")||"<p>Your bag is empty.</p>";
+total.innerText=t.toLocaleString();
 }
-
-function toggleWish(id){wish.includes(id)?wish=wish.filter(x=>x!=id):wish.push(id);render()}
-
-function add(id){let x=bag.find(a=>a.id==id);x?x.q++:bag.push({id:id,q:1});openCart()}
-
-function openCart(){
-items.innerHTML=bag.length?bag.map(a=>{let x=shoes[a.id];return `<div class="item"><img src="${x.img}"><div><b>${x.brand} ${x.name}</b><br>₹${x.price.toLocaleString()}<div class="qty"><button onclick="qty(${a.id},-1)">−</button>${a.q}<button onclick="qty(${a.id},1)">+</button></div></div></div>`}).join(""):"<p>Your bag is empty.</p>";
-total.textContent="₹"+bag.reduce((s,a)=>s+shoes[a.id].price*a.q,0).toLocaleString();
-drawer.classList.add("open");overlay.classList.add("show");
-}
-
-function qty(id,n){let x=bag.find(a=>a.id==id);x.q+=n;if(x.q<1)bag=bag.filter(a=>a.id!=id);openCart()}
-
-function placeOrder(){if(!bag.length){alert("Your bag is empty!");return}bag=[];closeAll();alert("✓ Order Placed Successfully! Thank you for shopping with ShoeHub.");}
-
-function closeAll(){drawer.classList.remove("open");modal.classList.remove("show");overlay.classList.remove("show")}
-
-document.getElementById("nAll").classList.add("active");
-render();
+function openCart(){cartBox.style.display="block"}function closeCart(){cartBox.style.display="none"}
+function details(i){let p=P[i];details.innerHTML="";document.getElementById("details").innerHTML=`<div class="detail"><img src="${I[i%I.length]}"><div class="detailText"><small>${p[0]} · ${p[2]}</small><h2>${p[1]}</h2><div class="rating">★ ${p[5]}</div><h2>₹${p[3].toLocaleString()}</h2><p>Comfortable premium footwear made for style and everyday performance.</p><h4>Size</h4><div class="sizes"><button>6</button><button>7</button><button>8</button><button>9</button><button>10</button></div><h4>Color</h4><div class="colors"><button>Black</button><button>White</button><button>Blue</button><button>Grey</button></div><button class="buy" onclick="add(${i});closeModal()">Add To Bag</button></div></div>`;modal.style.display="flex"}
+function closeModal(){modal.style.display="none"}
+function placeOrder(){if(!cart.length)return alert("Your bag is empty!");cart=[];update();closeCart();alert("🎉 Order placed successfully!")}
+setup();render();update();
 </script>
 </body>
-</html>
+	</html>
